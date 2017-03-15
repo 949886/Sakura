@@ -97,8 +97,8 @@ extension UIButton {
         if let imageView = self.imageView {
             
             // 1. 得到imageView和titleLabel的宽、高
-            var imageWith: CGFloat = imageView.frame.size.width
-            var imageHeight: CGFloat = imageView.frame.size.height
+            let imageWith: CGFloat = imageView.frame.size.width
+            let imageHeight: CGFloat = imageView.frame.size.height
             var labelWidth: CGFloat = 0.0
             var labelHeight: CGFloat = 0.0
             if #available(iOS 8.0, *) {

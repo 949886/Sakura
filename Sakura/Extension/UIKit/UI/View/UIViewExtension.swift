@@ -33,9 +33,9 @@ extension UIView {
     var navigationController: UINavigationController? {
         var view: UIView? = self
         while view != nil {
-            var nextResponder = view?.next
+            let nextResponder = view?.next
             if (nextResponder is UIViewController) {
-                var viewController: UIViewController? = (nextResponder as? UIViewController)
+                let viewController: UIViewController? = (nextResponder as? UIViewController)
                 if viewController?.navigationController != nil {
                     return viewController?.navigationController
                 }
@@ -49,9 +49,9 @@ extension UIView {
         var tabBarController: UITabBarController? = nil
         
         //Scan rootViewController.
-        var rootViewContrller = UIApplication.shared.keyWindow?.rootViewController
+        let rootViewContrller = UIApplication.shared.keyWindow?.rootViewController
         if (rootViewContrller is UINavigationController) {
-            var controller = (rootViewContrller as? UINavigationController)
+            let controller = (rootViewContrller as? UINavigationController)
             if (controller?.topViewController is UITabBarController) {
                 tabBarController = controller?.topViewController as? UITabBarController
             }

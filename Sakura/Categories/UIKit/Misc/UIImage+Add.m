@@ -12,7 +12,7 @@
 
 - (UIImage *)centerStretchableImage
 {
-    return [self stretchableImageWithLeftCapWidth:self.size.width * 0.5 topCapHeight:self.size.height * 0.5];
+    return [self resizableImageWithCapInsets:UIEdgeInsetsMake(self.size.height * 0.5, self.size.width * 0.5, self.size.height * 0.5, self.size.width * 0.5)];
 }
 
 @end

@@ -8,13 +8,7 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/949886/Sakura.git', :tag => s.version}
   s.platform = :ios, '8.0'
   s.requires_arc = true
-  s.source_files = 'Sakura/**/*.{h,swift}'
-  s.exclude_files = 'SakuraTests/**/*.swift'
+  s.source_files = 'Sakura/**/*.{h,m}'
+  s.public_header_files = 'Sakura/**/*.{h}'
   s.frameworks = 'Foundation'
-
-  s.subspec 'ObjC' do |objc|
-    objc.source = { :git => 'https://github.com/949886/Sakura.git', :tag => s.version}
-    objc.source_files = 'Sakura/**/*.{h,m}'
-    objc.public_header_files = 'Sakura/**/*.{h}'
-  end
 end

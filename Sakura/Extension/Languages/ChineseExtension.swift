@@ -3,10 +3,26 @@
 //  Sakura
 //
 //  Created by YaeSakura on 2017/2/28.
-//  Copyright © 2017 Sakura. All rights reserved.
+//  Copyright © 2017 YaeSakura. All rights reserved.
 //
 
 import Foundation
+
+extension String
+{
+
+    /// E.G.
+    ///「氷菓」-> 「bing guo」
+    ///「氷iscream菓」 -> 「bing iscream guo」
+    ///「氷。菓」 -> 「bing。guo」
+    public var pinyin: String {
+        let cfstring = CFStringCreateMutableCopy(nil, 0, self as CFString)
+        CFStringTransform(cfstring, nil, kCFStringTransformMandarinLatin, false)
+        CFStringTransform(cfstring, nil, kCFStringTransformStripCombiningMarks, false)
+        return String(describing: cfstring)
+    }
+    
+}
 
 extension Integer
 {

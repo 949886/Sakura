@@ -25,6 +25,12 @@ extension String
         return self.substring(to: index)
     }
     
+    /// Substring between start and end(excluding start & end).
+    ///
+    /// - Parameters:
+    ///   - start: Truncate string from start. If start is nil, substring will start from the head of string.
+    ///   - end: Truncate string to end. If end is nil, substring will end to the tail of string.
+    /// - Returns: Substring between start and end(excluding start & end). If the string not contains start or end, return nil.
     public func substring(start: String?, end: String?) -> String?
     {
         if nil != start && !self.contains(start!) { return nil }
@@ -38,7 +44,7 @@ extension String
         }
         scanner.scanUpTo((nil == end) ? "\0" : end!, into: &result)
         
-        return result as? String
+        return result as String?
     }
 
 }
@@ -47,6 +53,15 @@ extension String
 
 extension String
 {
+    /**
+     Imitation of PHP function mb_strwidth().
+     Caculate length of string including unicode characters. Algorithm:
+     U+0000 - U+0019	0   0
+     U+0020 - U+1FFF	1   1
+     U+2000 - U+FF60	2   2
+     U+FF61 - U+FF9F	1   1
+     U+FFA0 - ???       2
+     */
     public var unicodeLength: Int {
         var length: Int = 0
         for character in self.utf16 {
@@ -54,7 +69,11 @@ extension String
         }
         return length
     }
-    
+
+    /// Substring which unicode length not exceed specific length.
+    ///
+    /// - Parameter length: length specific length.
+    /// - Returns: Truncated string.
     public func substring(withinUnicodeLength length: Int) -> String {
         var unicodeLength: Int = 0
         var index: Int = 0

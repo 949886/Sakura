@@ -18,6 +18,10 @@ extension UIDevice {
         return false
     }
     
+    public var isProxying: Bool {
+        return false
+    }
+    
     public var machineModel: String {
         var size: size_t = 0
         sysctlbyname("hw.machine", nil, &size, nil, 0)

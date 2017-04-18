@@ -13,4 +13,8 @@ public extension UIApplication {
     public var bundleID : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String }
     public var version : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String }
     public var buildVersion : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String }
+    
+    public var launchImage: UIImage {
+        return UIImage()
+    }
 }

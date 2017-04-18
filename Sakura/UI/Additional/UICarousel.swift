@@ -3,7 +3,7 @@
 //  Sakura
 //
 //  Created by YaeSakura on 2017/3/3.
-//  Copyright © 2017年 LunarEclipse. All rights reserved.
+//  Copyright © 2017年 YaeSakura. All rights reserved.
 //
 
 import Foundation

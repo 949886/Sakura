@@ -3,7 +3,7 @@
 //  Sakura
 //
 //  Created by YaeSakura on 2017/2/28.
-//  Copyright © 2017 Sakura. All rights reserved.
+//  Copyright © 2017 YaeSakura. All rights reserved.
 //
 
 import Foundation

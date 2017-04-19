@@ -11,5 +11,6 @@
 @interface UITouch (Add)
 
 @property (nonatomic, readonly) CGPoint touchPoint;
+@property (nonatomic, readonly) CGPoint globalTouchPoint;
 
 @end

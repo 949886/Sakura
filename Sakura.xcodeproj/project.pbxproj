@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9817115D1E9F36320030B8D3 /* UIDevice+Add.h in Headers */ = {isa = PBXBuildFile; fileRef = 9817115B1E9F36320030B8D3 /* UIDevice+Add.h */; };
+		9817115E1E9F36320030B8D3 /* UIDevice+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9817115C1E9F36320030B8D3 /* UIDevice+Add.m */; };
+		981711611E9F36A90030B8D3 /* UIColor+Add.h in Headers */ = {isa = PBXBuildFile; fileRef = 9817115F1E9F36A90030B8D3 /* UIColor+Add.h */; };
+		981711621E9F36A90030B8D3 /* UIColor+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 981711601E9F36A90030B8D3 /* UIColor+Add.m */; };
 		981A474D1E6027E700EE6B1F /* CALayer+Add.h in Headers */ = {isa = PBXBuildFile; fileRef = 981A474B1E6027E700EE6B1F /* CALayer+Add.h */; };
 		981A474E1E6027E700EE6B1F /* CALayer+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A474C1E6027E700EE6B1F /* CALayer+Add.m */; };
 		986A27041E65698A00D6D766 /* UIRatingBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 986A27021E65698A00D6D766 /* UIRatingBar.h */; };
@@ -61,6 +65,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9817115B1E9F36320030B8D3 /* UIDevice+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Add.h"; sourceTree = "<group>"; };
+		9817115C1E9F36320030B8D3 /* UIDevice+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Add.m"; sourceTree = "<group>"; };
+		9817115F1E9F36A90030B8D3 /* UIColor+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Add.h"; sourceTree = "<group>"; };
+		981711601E9F36A90030B8D3 /* UIColor+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Add.m"; sourceTree = "<group>"; };
 		981A474B1E6027E700EE6B1F /* CALayer+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Add.h"; sourceTree = "<group>"; };
 		981A474C1E6027E700EE6B1F /* CALayer+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Add.m"; sourceTree = "<group>"; };
 		986A27021E65698A00D6D766 /* UIRatingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRatingBar.h; sourceTree = "<group>"; };
@@ -137,6 +145,8 @@
 				9872A6431E542330001FF506 /* UIScreen+Add.m */,
 				9872A6461E542505001FF506 /* UITouch+Add.h */,
 				9872A6471E542505001FF506 /* UITouch+Add.m */,
+				9817115F1E9F36A90030B8D3 /* UIColor+Add.h */,
+				981711601E9F36A90030B8D3 /* UIColor+Add.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -146,6 +156,8 @@
 			children = (
 				9873C7591E5D4C5600A828D0 /* UIApplication+Add.h */,
 				9873C75A1E5D4C5600A828D0 /* UIApplication+Add.m */,
+				9817115B1E9F36320030B8D3 /* UIDevice+Add.h */,
+				9817115C1E9F36320030B8D3 /* UIDevice+Add.m */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -316,6 +328,7 @@
 				987A37621E5187E900CD6BEA /* NSString+Add.h in Headers */,
 				98708E351E4DC6860051E980 /* UIView+Add.h in Headers */,
 				DFCED5421E2A017E00CFD9A8 /* Sakura.h in Headers */,
+				9817115D1E9F36320030B8D3 /* UIDevice+Add.h in Headers */,
 				981A474D1E6027E700EE6B1F /* CALayer+Add.h in Headers */,
 				987291ED1E67D1CF00883BE9 /* UISeparator.h in Headers */,
 				9872A6481E542505001FF506 /* UITouch+Add.h in Headers */,
@@ -324,6 +337,7 @@
 				98708E461E4DCF0E0051E980 /* UITabs.h in Headers */,
 				9872A6611E544015001FF506 /* NSFileManager+Add.h in Headers */,
 				987A37661E51881A00CD6BEA /* NSString+Chinese.h in Headers */,
+				981711611E9F36A90030B8D3 /* UIColor+Add.h in Headers */,
 				9872A63C1E542282001FF506 /* NSDate+Add.h in Headers */,
 				9871D1961E63EC6F0025FBCA /* NSTimer+Add.h in Headers */,
 				986A27041E65698A00D6D766 /* UIRatingBar.h in Headers */,
@@ -449,9 +463,11 @@
 				9872A6371E5411D5001FF506 /* UIBanner.m in Sources */,
 				986A27051E65698A00D6D766 /* UIRatingBar.m in Sources */,
 				9871D1971E63EC6F0025FBCA /* NSTimer+Add.m in Sources */,
+				9817115E1E9F36320030B8D3 /* UIDevice+Add.m in Sources */,
 				987A37671E51881A00CD6BEA /* NSString+Chinese.m in Sources */,
 				981A474E1E6027E700EE6B1F /* CALayer+Add.m in Sources */,
 				9872A6451E542330001FF506 /* UIScreen+Add.m in Sources */,
+				981711621E9F36A90030B8D3 /* UIColor+Add.m in Sources */,
 				987466871E5EE5FB0090B1C0 /* UITableView+Add.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,6 +18,8 @@ FOUNDATION_EXPORT const unsigned char SakuraVersionString[];
 
 #import "UIFont+Add.h"
 #import "UIView+Add.h"
+#import "UIImage+Add.h"
+#import "UIColor+Add.h"
 #import "NSString+Chinese.h"
 
 #import "UIBanner.h"

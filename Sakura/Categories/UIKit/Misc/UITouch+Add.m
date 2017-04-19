@@ -15,4 +15,9 @@
     return [self locationInView:self.view];
 }
 
+-(CGPoint)globalTouchPoint
+{
+    return [self locationInView:[UIApplication sharedApplication].keyWindow];
+}
+
 @end

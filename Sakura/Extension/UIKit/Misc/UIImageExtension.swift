@@ -20,7 +20,7 @@ extension UIImage
             return nil
         }
         
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        let colorSpace = CGColorSpaceCreateDeviceRGB()
         
 //        var rgba = calloc(4, <#T##__size: Int##Int#>)
         

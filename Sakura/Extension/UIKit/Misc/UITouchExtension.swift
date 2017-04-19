@@ -10,11 +10,11 @@ import Foundation
 
 extension UITouch
 {
-    var touchPoint: CGPoint {
+    public var touchPoint: CGPoint {
         return self.location(in: self.view)
     }
     
-    var globalTouchPoint: CGPoint {
+    public var globalTouchPoint: CGPoint {
         return self.location(in: UIApplication.shared.keyWindow)
     }
 }

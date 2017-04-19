@@ -12,8 +12,8 @@ import Foundation
 
 extension String
 {
-    var nsstring: NSString { return self as NSString }
-    var length: Int { return self.characters.count }
+    public var nsstring: NSString { return self as NSString }
+    public var length: Int { return self.characters.count }
 
     public func subString(from index : Int) -> String {
         let index = self.index(self.startIndex, offsetBy: String.IndexDistance(index))

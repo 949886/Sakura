@@ -19,7 +19,7 @@ public extension UIView {
 
 extension UIView {
     
-    var viewController: UIViewController? {
+    public var viewController: UIViewController? {
         var view: UIView? = self
         while view != nil {
             if (view?.next is UIViewController) {
@@ -30,7 +30,7 @@ extension UIView {
         return nil
     }
     
-    var navigationController: UINavigationController? {
+    public var navigationController: UINavigationController? {
         var view: UIView? = self
         while view != nil {
             let nextResponder = view?.next
@@ -45,7 +45,7 @@ extension UIView {
         return nil
     }
     
-    func tabBarController() -> UITabBarController? {
+    public var tabBarController: UITabBarController? {
         var tabBarController: UITabBarController? = nil
         
         //Scan rootViewController.
@@ -71,7 +71,7 @@ extension UIView {
     }
     
     /// Print all subviews recursively in the view hierarchy including self.
-    public func printViewHierarchy() {
+    public func printHierarchy() {
         
         struct Static { static var depth = 0 }
         
@@ -84,7 +84,7 @@ extension UIView {
         
         Static.depth += 1
         for subview in self.subviews {
-            subview.printViewHierarchy()
+            subview.printHierarchy()
         }
         Static.depth -= 1
 

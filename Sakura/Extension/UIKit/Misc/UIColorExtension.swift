@@ -6,17 +6,19 @@
 //  Copyright © 2016 Sakura. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 extension UIColor
 {
     convenience init(hexString : String)
     {
-        let rgba = UIColor.hex2RGB("")
+        let rgba = UIColor.hex2RGBA("")
         self.init(red: rgba.0, green: rgba.1, blue: rgba.2, alpha: rgba.3)
     }
     
-    static func hex2RGB(_ hexString : String) -> (CGFloat, CGFloat, CGFloat, CGFloat)
+    static func hex2RGBA(_ hexString : String) -> (CGFloat, CGFloat, CGFloat, CGFloat)
     {
         var hex = hexString.uppercased()
         
@@ -32,3 +34,5 @@ extension UIColor
     
     
 }
+    
+#endif

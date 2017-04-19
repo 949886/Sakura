@@ -10,11 +10,11 @@ import Foundation
 
 extension UIFont
 {
-    static func lightSystemFont(ofSize fontSize: CGFloat) -> UIFont {
+    public static func lightSystemFont(ofSize fontSize: CGFloat) -> UIFont {
         return UIFont(name: "HelveticaNeue-Light", size: fontSize)!
     }
     
-    static func ultraLightSystemFont(ofSize fontSize: CGFloat) -> UIFont {
+    public static func ultraLightSystemFont(ofSize fontSize: CGFloat) -> UIFont {
         return UIFont(name: "HelveticaNeue-UltraLight", size: fontSize)!
     }
 }

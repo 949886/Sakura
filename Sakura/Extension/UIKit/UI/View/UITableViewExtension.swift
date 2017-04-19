@@ -10,12 +10,12 @@ import Foundation
 
 extension UITableView {
     
-    var autolayoutTableViewHeader : UIView? {
+    public var autolayoutTableViewHeader : UIView? {
         get { return self.tableHeaderView }
         set { autolayoutHeaderFooterView(newValue, 0) }
     }
     
-    var autolayoutTableViewFooter : UIView? {
+    public var autolayoutTableViewFooter : UIView? {
         get { return self.tableHeaderView }
         set { autolayoutHeaderFooterView(newValue, 1) }
     }

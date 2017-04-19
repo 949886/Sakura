@@ -10,7 +10,7 @@ import Foundation
 
 extension Integer {
     
-    var digit: Int {
+    public var digit: Int {
         var num = self, digit = 0
         while num > 0 {
             num /= 10

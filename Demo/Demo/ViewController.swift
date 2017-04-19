@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         print("氷菓".pinyin)
         textField.placeholderColor = UIColor.red
@@ -34,8 +33,8 @@ class ViewController: UIViewController {
         
         button.textLayout = .bottom
         button.textLayoutSpacing = 20
-//        button.sizeToFit()
-        
+
+        UIApplication.shared.launchImage(forOrientation: .landscape);
     }
     
     override func viewDidAppear(_ animated: Bool) {

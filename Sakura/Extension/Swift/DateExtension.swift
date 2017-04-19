@@ -13,29 +13,28 @@ import Foundation
 extension Date
 {
     //Date components.
-    var year : Int { return Date.calendar.component(.year, from: self) }
-    var month : Int { return Date.calendar.component(.month, from: self) }
-    var day : Int { return Date.calendar.component(.day, from: self) }
-    var weekday : Int { return Date.calendar.component(.weekday, from: self) }
-    var hour : Int { return Date.calendar.component(.hour, from: self) }
-    var minute : Int { return Date.calendar.component(.minute, from: self) }
-    var second : Int { return Date.calendar.component(.second, from: self) }
-    var millisecond : Int { return Date.calendar.component(.nanosecond, from: self) / 1000000 }
-    var microsecond : Int { return Date.calendar.component(.nanosecond, from: self) / 1000 }
-    var nanosecond : Int { return Date.calendar.component(.nanosecond, from: self) }
-    var dayOfYear : Int { return _dayOfYear() }
-    var weekOfMonth : Int { return Date.calendar.component(.weekOfMonth, from: self) }
-    var weekOfYear : Int { return Date.calendar.component(.weekOfYear, from: self) }
-    var quarter : Int { return Date.calendar.component(.quarter, from: self) }
+    public var year : Int { return Date.calendar.component(.year, from: self) }
+    public var month : Int { return Date.calendar.component(.month, from: self) }
+    public var day : Int { return Date.calendar.component(.day, from: self) }
+    public var weekday : Int { return Date.calendar.component(.weekday, from: self) }
+    public var hour : Int { return Date.calendar.component(.hour, from: self) }
+    public var minute : Int { return Date.calendar.component(.minute, from: self) }
+    public var second : Int { return Date.calendar.component(.second, from: self) }
+    public var millisecond : Int { return Date.calendar.component(.nanosecond, from: self) / 1000000 }
+    public var microsecond : Int { return Date.calendar.component(.nanosecond, from: self) / 1000 }
+    public var nanosecond : Int { return Date.calendar.component(.nanosecond, from: self) }
+    public var dayOfYear : Int { return _dayOfYear() }
+    public var weekOfMonth : Int { return Date.calendar.component(.weekOfMonth, from: self) }
+    public var weekOfYear : Int { return Date.calendar.component(.weekOfYear, from: self) }
+    public var quarter : Int { return Date.calendar.component(.quarter, from: self) }
     
     //Total days of current month (gregorian).
-    var daysOfCurrentMonth : Int { return Date.calendar.range(of: .day, in:.month, for: self)!.upperBound }
+    public var daysOfCurrentMonth : Int { return Date.calendar.range(of: .day, in:.month, for: self)!.upperBound }
     
     
     // MARK: - Public
     
-    private func isLeapYear() -> Bool
-    {
+    private func isLeapYear() -> Bool {
         return (year % 4) != 0 && (year % 400) != 0
     }
     
@@ -79,12 +78,12 @@ extension Date
     
     // MARK: - Public
     
-    static func parse(date : String, format: String) -> Date?
+    static func parse(date: String, format: String) -> Date?
     {
         return Date.parse(date: date, format: format, locale: "en_US")
     }
     
-    static func parse(date : String, format: String, locale: String) -> Date?
+    static func parse(date: String, format: String, locale: String) -> Date?
     {
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -93,12 +92,12 @@ extension Date
         return parsedDate
     }
     
-    static func format(date : Date, format: String) -> String
+    static func format(date: Date, format: String) -> String
     {
         return Date.format(date: date, format: format, locale: "en_US")
     }
     
-    static func format(date : Date, format: String, locale: String) -> String
+    static func format(date: Date, format: String, locale: String) -> String
     {
         let formatter = DateFormatter()
         formatter.dateFormat = format

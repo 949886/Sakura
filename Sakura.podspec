@@ -1,4 +1,5 @@
 Pod::Spec.new do |s|
+
   s.name = 'Sakura'
   s.version = '0.0.2'
   s.summary = 'A beautiful and powerful frameworks like cherry blossom.'
@@ -8,11 +9,10 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/949886/Sakura.git', :branch => "master"}
   s.platform = :ios, '8.0'
   s.requires_arc = true
-  s.default_subspec = 'Sakura'
+  s.default_subspec = 'Extension', 'UI'
 
-  s.subspec "Sakura" do |ss|
-    ss.source_files = "Sakura/Extension/**/*.{h,swift}",
-                                     "Sakura/UI/**/*.{h,swift}"
+  s.subspec "Extension" do |ss|
+    ss.source_files = "Sakura/Extension/**/*.{h,swift}"
     ss.frameworks = 'UIKit'
   end
 
@@ -20,8 +20,12 @@ Pod::Spec.new do |s|
     ss.source_files = "Sakura/UI/**/*.{h,swift}"
   end
 
+  s.subspec "Utility" do |ss|
+    ss.source_files = "Sakura/Utility/**/*.{h,swift}"
+  end
+
   s.subspec "OC" do |ss|
-    ss.dependency 'AFNetworking'
+    ss.dependency 'SakuraOC'
   end
 
 end

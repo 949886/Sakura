@@ -221,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				986A26E81E652B5000D6D766 /* Reflection */,
-				DF15875C1E23F4E5006A4BF6 /* Data */,
 				DF15875D1E23F4E5006A4BF6 /* Extension */,
 				DFAF571C1E3B1BC30019CFAA /* Utility */,
 				DF15877F1E23F4E5006A4BF6 /* UI */,
@@ -238,13 +237,6 @@
 				DF1587521E23F495006A4BF6 /* Info.plist */,
 			);
 			path = SakuraTests;
-			sourceTree = "<group>";
-		};
-		DF15875C1E23F4E5006A4BF6 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		DF15875D1E23F4E5006A4BF6 /* Extension */ = {

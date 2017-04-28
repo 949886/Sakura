@@ -14,6 +14,8 @@ Pod::Spec.new do |s|
 
   s.subspec "Extension" do |ss|
     ss.source_files = "Sakura/Extension/**/*.{h,swift}"
+    ss.preserve_path = 'Modules/*'
+    ss.pod_target_xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/Sakura/Modules' }
     ss.frameworks = 'UIKit'
     ss.library = 'z'
   end

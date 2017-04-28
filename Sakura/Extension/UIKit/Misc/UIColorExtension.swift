@@ -39,7 +39,7 @@ extension UIColor
             return nil
         }
         
-        if let hex = Int(hexString, radix: 16) {
+        if let hex = UInt(hexString, radix: 16) {
             if hexString.length == 3 {
                 let r = CGFloat((hex & 0xF00) >> 8) / 255.0
                 let g = CGFloat((hex & 0x0F0) >> 4) / 255.0

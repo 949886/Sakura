@@ -9,8 +9,8 @@
 import Foundation
 
 @IBDesignable
-open class UITabs: UIView {
-    
+open class UITabs: UIView
+{
     @IBInspectable public var index: Int = 0
     @IBInspectable public var startIndex: Int = 0
     

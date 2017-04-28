@@ -10,7 +10,17 @@ import Foundation
 
 // MARK: - Stored Property
 
-public extension UITextField {
+public extension UITextField
+{
+    
+    public var selectedText: String? {
+        if let range = self.selectedTextRange {
+            return self.text(in: range)
+        }
+        return nil
+    }
+    
+    // Stored Property
     
     public var placeholderColor: UIColor {
         get { return _getPlaceholderColor() }
@@ -19,9 +29,21 @@ public extension UITextField {
     
 }
 
+// MARK: - Methods
+
+extension UITextField
+{
+    
+    public func selectAll() {
+        self.selectedTextRange = self.textRange(from: self.beginningOfDocument, to: self.endOfDocument)
+    }
+
+}
+
 // MARK: - Private
 
-extension UITextField {
+extension UITextField
+{
     
     struct AssociatedKey {
         static var placeholderColor: Void?
@@ -40,11 +62,3 @@ extension UITextField {
     }
     
 }
-
-
-// MARK: - Common
-
-extension UITextField {
-    
-}
-

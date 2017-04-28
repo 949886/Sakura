@@ -27,7 +27,7 @@ public extension UIApplication {
     ///
     /// - Parameter forOrientation: Portrait or landspace.
     /// - Returns: Launch screen image for specific orientation.
-    func launchImage(forOrientation orientation: LaunchImageOrientation) -> UIImage? {
+    public func launchImage(forOrientation orientation: LaunchImageOrientation) -> UIImage? {
         
         //Get launch image from assets.
         let launchImages = Bundle.main.infoDictionary?["UILaunchImages"] as? [[String:String]]

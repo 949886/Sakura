@@ -11,13 +11,15 @@ import UIKit
 
 // MARK: - Stored Property
 
-public extension UIView {
+public extension UIView
+{
     
 }
 
 // MARK: - Common
 
-extension UIView {
+extension UIView
+{
     
     public var viewController: UIViewController? {
         var view: UIView? = self
@@ -75,12 +77,12 @@ extension UIView {
         
         struct Static { static var depth = 0 }
         
-        for _ in 0 ..< Static.depth { debugPrint("\t") }
+        for _ in 0 ..< Static.depth { print("\t", terminator: "") }
         
         let className = NSStringFromClass(type(of:self))
         let frame = NSStringFromCGRect(self.frame)
         
-        debugPrint("\(className): \(frame)")
+        print("\(className): \(frame)")
         
         Static.depth += 1
         for subview in self.subviews {

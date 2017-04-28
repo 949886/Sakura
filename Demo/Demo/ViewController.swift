@@ -31,16 +31,21 @@ class ViewController: UIViewController {
             self.view.setNeedsDisplay()
         }
         
+        print("STRING \("abc".subString(from: 1, to: 2))")
+        
         button.textLayout = .bottom
         button.textLayoutSpacing = 20
 
-        UIApplication.shared.launchImage(forOrientation: .landscape);
+        UIApplication.shared.launchImage(forOrientation: .landscape)
+        
+        let color = UIColor(hexString: "#FE960E")
+        self.view.backgroundColor = color
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let controller = UIWebViewController(url: "http://cs.bukamanhua.com:8000/event/movie_ticket.php")
-        controller.redirector = ["" : self.handler]
-        self.present(controller, animated: true, completion: nil)
+//        let controller = UIWebViewController(url: "http://cs.bukamanhua.com:8000/event/movie_ticket.php")
+//        controller.redirector = ["" : self.handler]
+//        self.present(controller, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

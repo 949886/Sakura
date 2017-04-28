@@ -15,14 +15,43 @@ extension String
     public var nsstring: NSString { return self as NSString }
     public var length: Int { return self.characters.count }
 
-    public func subString(from index : Int) -> String {
-        let index = self.index(self.startIndex, offsetBy: String.IndexDistance(index))
+    
+    /// <#Description#>
+    ///
+    /// - Parameter index: <#index description#>
+    /// - Returns: <#return value description#>
+    public func subString(from: Int) -> String {
+        var from = from
+        if from < 0 { from = 0 }
+        if from > self.length { from = self.length }
+        let index = self.index(self.startIndex, offsetBy: String.IndexDistance(from))
         return self.substring(from: index)
     }
     
-    public func subString(to index : Int) -> String {
-        let index = self.index(self.startIndex, offsetBy: String.IndexDistance(index))
+    
+    /// <#Description#>
+    ///
+    /// - Parameter to: <#to description#>
+    /// - Returns: <#return value description#>
+    public func subString(to: Int) -> String {
+        var to = to
+        if to < 0 { to = 0 }
+        if to > self.length { to = self.length }
+        let index = self.index(self.startIndex, offsetBy: String.IndexDistance(to))
         return self.substring(to: index)
+    }
+    
+    public func subString(from: Int, to: Int) -> String {
+        let string = self.subString(from: from)
+        return string.subString(to: to - from + 1)
+    }
+    
+    public subscript(range: Range<Int>) -> String {
+        return self.subString(from: range.lowerBound, to: range.upperBound - 1)
+    }
+    
+    public subscript(range: ClosedRange<Int>) -> String {
+        return self.subString(from: range.lowerBound, to: range.upperBound)
     }
     
     /// Substring between start and end(excluding start & end).

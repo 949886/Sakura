@@ -8,7 +8,16 @@
 
 import Foundation
 
-open class UIViewPager: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+open class UIViewPager: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+{
+    
+    public var index: UInt = 0
+    public var startIndex: UInt = 0
+    
+//    private var collectionView
+//    private var flowLayout
+    
+    //MARK: Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,8 +33,13 @@ open class UIViewPager: UIView, UICollectionViewDataSource, UICollectionViewDele
         
     }
     
-    
     //MARK: Delegate
+    
+    /* UIScrollViewDelegate */
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
     
     /* UICollectionViewDataSource */
     

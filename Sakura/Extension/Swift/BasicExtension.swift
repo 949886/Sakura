@@ -10,6 +10,8 @@ import Foundation
 
 extension Integer {
     
+    
+    /// Digit of an integer. e.g. 12450 -> 5
     public var digit: Int {
         var num = self, digit = 0
         while num > 0 {

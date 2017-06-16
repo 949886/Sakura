@@ -10,6 +10,10 @@ import Foundation
 
 extension Timer
 {
+    public var timeElapsed: TimeInterval {
+        return -self.fireDate.timeIntervalSinceNow
+    }
+    
     public func pause() { self.fireDate = Date.distantFuture }
     public func resume() { self.fireDate = Date() }
 }

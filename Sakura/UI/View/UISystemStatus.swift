@@ -8,6 +8,7 @@
 
 import UIKit
 
-class UISystemStatus: UIView {
+open class UISystemStatus: UIView
+{
 
 }

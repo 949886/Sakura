@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A4F231ECAEDA500836D4B /* ViewController2.swift */; };
+		98C9CEC81EE0090F00D28F98 /* test.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = 98C9CEC71EE0090F00D28F98 /* test.txt.gz */; };
 		DF6F79D11E9E06BE00C31AD9 /* UIFormSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F79D01E9E06BE00C31AD9 /* UIFormSubclass.swift */; };
 		DFC1BFD01E837CCA0066FB50 /* Sakura.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC1BFCD1E837BDA0066FB50 /* Sakura.framework */; };
 		DFC1BFD11E837CCA0066FB50 /* Sakura.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFC1BFCD1E837BDA0066FB50 /* Sakura.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -72,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		980A4F231ECAEDA500836D4B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		98C9CEC71EE0090F00D28F98 /* test.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = test.txt.gz; sourceTree = "<group>"; };
 		DF6F79D01E9E06BE00C31AD9 /* UIFormSubclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFormSubclass.swift; sourceTree = "<group>"; };
 		DFC1BFC71E837BDA0066FB50 /* Sakura.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sakura.xcodeproj; path = ../Sakura.xcodeproj; sourceTree = "<group>"; };
 		DFE7E4941DE847D10072C61D /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +119,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98C9CEC51EE0090F00D28F98 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				98C9CEC61EE0090F00D28F98 /* Zip */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		98C9CEC61EE0090F00D28F98 /* Zip */ = {
+			isa = PBXGroup;
+			children = (
+				98C9CEC71EE0090F00D28F98 /* test.txt.gz */,
+			);
+			path = Zip;
+			sourceTree = "<group>";
+		};
 		DF6F79CD1E9E068900C31AD9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +174,7 @@
 				DFE7E4961DE847D10072C61D /* Demo */,
 				DFE7E4AB1DE847D10072C61D /* DemoTests */,
 				DFE7E4B61DE847D10072C61D /* DemoUITests */,
+				98C9CEC51EE0090F00D28F98 /* Resources */,
 				DFE7E4951DE847D10072C61D /* Products */,
 				DFCED5591E2A03CB00CFD9A8 /* Frameworks */,
 			);
@@ -175,6 +196,7 @@
 				DF6F79CD1E9E068900C31AD9 /* UI */,
 				DFE7E4971DE847D10072C61D /* AppDelegate.swift */,
 				DFE7E4991DE847D10072C61D /* ViewController.swift */,
+				980A4F231ECAEDA500836D4B /* ViewController2.swift */,
 				DFE7E49B1DE847D10072C61D /* Main.storyboard */,
 				DFE7E49E1DE847D10072C61D /* Assets.xcassets */,
 				DFE7E4A01DE847D10072C61D /* LaunchScreen.storyboard */,
@@ -336,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98C9CEC81EE0090F00D28F98 /* test.txt.gz in Resources */,
 				DFE7E4A21DE847D10072C61D /* LaunchScreen.storyboard in Resources */,
 				DFE7E49F1DE847D10072C61D /* Assets.xcassets in Resources */,
 				DFE7E49D1DE847D10072C61D /* Main.storyboard in Resources */,
@@ -364,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE7E49A1DE847D10072C61D /* ViewController.swift in Sources */,
+				980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */,
 				DFE7E4981DE847D10072C61D /* AppDelegate.swift in Sources */,
 				DF6F79D11E9E06BE00C31AD9 /* UIFormSubclass.swift in Sources */,
 			);

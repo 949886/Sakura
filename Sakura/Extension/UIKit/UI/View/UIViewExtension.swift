@@ -21,6 +21,31 @@ public extension UIView
 extension UIView
 {
     
+    //MARK: Coordinates
+    
+    public var x: CGFloat {
+        get { return self.frame.origin.x }
+        set { self.frame.origin.x = newValue }
+    }
+    
+    public var y: CGFloat {
+        get { return self.frame.origin.y }
+        set { self.frame.origin.y = newValue }
+    }
+    
+    public var width: CGFloat {
+        get { return self.frame.size.width }
+        set { self.frame.size.width = newValue }
+    }
+    
+    public var height: CGFloat {
+        get { return self.frame.size.height }
+        set { self.frame.size.height = newValue }
+    }
+
+    
+    //MARK: Controllers
+    
     public var viewController: UIViewController? {
         var view: UIView? = self
         while view != nil {
@@ -69,7 +94,14 @@ extension UIView
                 view = view?.superview
             }
         }
-        return tabBarController!
+        return tabBarController
+    }
+    
+    //MARK: Misc
+    
+    public var extraHitInsets: UIEdgeInsets? {
+        get { return getAssociatedObject(key: "extraHitInsets") as? UIEdgeInsets }
+        set { setAssociatedObject(key: "extraHitInsets", value: newValue) }
     }
     
     /// Print all subviews recursively in the view hierarchy including self.
@@ -94,3 +126,23 @@ extension UIView
     
 }
 
+//MARK: - Swizzling
+
+extension UIView
+{
+    /* Method Swizzling */
+    
+    open override static func initialize()  {
+        swizzle(#selector(point(inside:with:)), #selector(swizzledPoint(inside:with:)))
+    }
+
+    /// The method used to exchang IMP with drawText(in:)
+    func swizzledPoint(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if extraHitInsets == .zero {
+            return swizzledPoint(inside: point, with: event)
+        } else {
+            return UIEdgeInsetsInsetRect(self.bounds, extraHitInsets ?? .zero).contains(point)
+        }
+    }
+
+}

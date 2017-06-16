@@ -1,5 +1,5 @@
 //
-//  UISpinner.swift
+//  UICheckBox.swift
 //  Sakura
 //
 //  Created by YaeSakura on 2017/1/15.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-open class UISpinner: UIView {
+open class UICheckBox: UIToggle
+{
+    
+    @IBInspectable public var check: Bool = false
     
 }
-

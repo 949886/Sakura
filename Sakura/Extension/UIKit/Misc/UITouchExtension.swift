@@ -17,4 +17,12 @@ extension UITouch
     public var globalTouchPoint: CGPoint {
         return self.location(in: UIApplication.shared.keyWindow)
     }
+    
+    public var isTouchInside: Bool {
+        if let view = self.view  {
+            return view.bounds.contains(self.touchPoint)
+        }
+        return false
+    }
+    
 }

@@ -8,6 +8,21 @@
 
 import Foundation
 
-open class UICollectionViewWaterfallLayout: UICollectionViewLayout {
+open class UICollectionViewWaterfallLayout: UICollectionViewLayout
+{
+    open override var collectionViewContentSize: CGSize {
+        return self.collectionView?.bounds.size ?? .zero
+    }
     
+    open override func prepare() {
+        
+    }
+    
+    open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return nil
+    }
+    
+    open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return nil
+    }
 }

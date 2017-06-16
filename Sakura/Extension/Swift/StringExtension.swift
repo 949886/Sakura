@@ -83,7 +83,7 @@ extension String
 extension String
 {
     /**
-     Imitation of PHP function mb_strwidth().
+     Like PHP function mb_strwidth().
      Caculate length of string including unicode characters. Algorithm:
      U+0000 - U+0019	0   0
      U+0020 - U+1FFF	1   1
@@ -128,6 +128,30 @@ extension String
         }
         
         return length
+    }
+    
+    /* Normalization */
+    
+    @objc public enum UnicodeNormalizationForms: Int {
+        case D      // Characters are decomposed by canonical equivalence, and multiple combining characters are arranged in a specific order.
+        case C      // Characters are decomposed and then recomposed by canonical equivalence.
+        case KD     // Characters are decomposed by compatibility, and multiple combining characters are arranged in a specific order.
+        case KC     // Characters are decomposed by compatibility, then recomposed by canonical equivalence.
+    }
+    
+    /// <#Description#>
+    ///
+    /// - Parameter form: <#form description#>
+    /// - Returns: <#return value description#>
+    public func normalize(to form: CFStringNormalizationForm) -> String {
+        let mString = (self as NSString).mutableCopy() as! NSMutableString
+        switch form {
+        case .D: CFStringNormalize(mString, .D)
+        case .C: CFStringNormalize(mString, .C)
+        case .KD: CFStringNormalize(mString, .KD)
+        case .KC: CFStringNormalize(mString, .KC)
+        }
+        return mString as String
     }
 }
 

@@ -19,21 +19,22 @@ class UIFormSubclass: UIForm {
     
     override func onCreate(form: inout UIForm) {
         
-        form
-        --
-        Section()
+        form --
+            Section()
             --
             Header()
             -- 8 --
             Row.defaultRow(text: "test")
             -- 40 --
-            Row().register(class: Cell.self, id: "cell")
+            Row.defaultRow(text: "string")
+                .register(class: Cell.self, id: "cell")
+                .register(class: Cell.self, id: "")
             -- 8 --
             Row() ~ items.count
             -- 8 --
             Footer()
             --
-        Section()
+            Section()
         
     }
 }

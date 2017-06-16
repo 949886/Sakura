@@ -9,6 +9,14 @@
 import UIKit
 import Sakura
 
+extension Progress
+{
+    var parent: Progress? {
+        
+        return (self as NSObject).value(forKey: "_parent") as? Progress
+    }
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
@@ -19,10 +27,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("氷菓".pinyin)
         textField.placeholderColor = UIColor.red
         separator.patternString = "20,20"
-//        separator.pattern = [10, 10, 123]
+        separator.pattern = [10, 10, 123]
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3000)) {
             self.label.text = "ddd"
@@ -40,6 +49,7 @@ class ViewController: UIViewController {
         
         let color = UIColor(hexString: "#FE960E")
         self.view.backgroundColor = color
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -8,8 +8,13 @@
 
 import Foundation
 
-extension FileManager {
+extension FileManager
+{
     
+    /// <#Description#>
+    ///
+    /// - Parameter path: <#path description#>
+    /// - Returns: <#return value description#>
     public static func fileSize(path: String) -> UInt64?
     {
         let manager = FileManager.default
@@ -17,6 +22,11 @@ extension FileManager {
         return (try? manager.attributesOfItem(atPath: path) as NSDictionary)?.fileSize()
     }
     
+    
+    /// <#Description#>
+    ///
+    /// - Parameter path: <#path description#>
+    /// - Returns: <#return value description#>
     public static func folderSize(path: String) -> UInt64?
     {
         var size: UInt64 = 0

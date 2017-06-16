@@ -1,13 +1,15 @@
 //
-//  UICarousel.swift
+//  UISpinner.swift
 //  Sakura
 //
-//  Created by YaeSakura on 2017/3/3.
+//  Created by YaeSakura on 2017/1/15.
 //  Copyright © 2017 YaeSakura. All rights reserved.
 //
 
 import Foundation
 
-open class UICarousel: UIView {
+open class UISpinner: UIView
+{
     
 }
+

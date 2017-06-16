@@ -8,7 +8,8 @@
 
 import Foundation
 
-open class UIForm: UIView {
+open class UIForm: UIView
+{
     
     open func onCreate(form: inout UIForm) {
         
@@ -27,12 +28,12 @@ open class UIForm: UIView {
             return Row()
         }
         
-        public func register(class: AnyClass, id: String) -> UIForm {
-            return form
+        public func register(class: AnyClass, id: String) -> Row {
+            return self
         }
         
-        public func register(nib: String, id: String) -> UIForm {
-            return form
+        public func register(nib: String, id: String) -> Row {
+            return self
         }
         
         public func count(_ num: UInt) -> UIForm {

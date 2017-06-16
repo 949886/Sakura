@@ -1,5 +1,5 @@
 //
-//  UICheckBox.swift
+//  UIGallery.swift
 //  Sakura
 //
 //  Created by YaeSakura on 2017/1/15.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-
-open class UICheckBox: UIButton {
-    
-    @IBInspectable public var check: Bool = false
+open class UIGallery: UIViewPager
+{
     
 }
+

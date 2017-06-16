@@ -10,13 +10,30 @@ import Foundation
 
 extension UICollectionView {
     
-    @IBInspectable public var defaultSelection : UInt {
+    /// Default selections of collecion view.
+    /// 'nil' is selecte none. [] is select all.
+    public var defaultSelections : [IndexPath]? {
         set {
-            
+            setAssociatedObject(key: "defaultSelections", value: newValue)
+            DispatchQueue.main.async {
+                [unowned self] in
+                
+                //Not empty.
+                for indexPath in newValue ?? [] {
+                    self.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                }
+                
+                //If an empty array('[]'), select all.
+                if newValue?.count == 0 {
+                    for section in 0..<self.numberOfSections {
+                        for row in 0..<self.numberOfItems(inSection: section) {
+                            self.selectItem(at: IndexPath(row: row, section: section), animated: false, scrollPosition: [])
+                        }
+                    }
+                }
+            }
         }
-        get {
-            return 1
-        }
+        get { return getAssociatedObject(key: "defaultSelections") as? [IndexPath] }
     }
     
 }

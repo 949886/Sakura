@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'Sakura'
-  s.version = '0.0.6'
+  s.version = '0.0.7'
   s.summary = 'A beautiful and powerful frameworks like cherry blossom.'
   s.homepage = 'http://eclipse.moe'
   s.license = { :type => 'Copyright', :text => 'Copyright (c) 2017 Yae Sakura. All rights reserved.' }

@@ -67,8 +67,6 @@ class ViewController2: UIViewController {
         let str = dict2.value(forKeyPath: "b")
         print("\(str)")
         
-        let normalized = "パ".normalize(to: .NFD)
-        print(normalized)
     }
     
     @IBAction func onClickButton(_ sender: UIToggle) {

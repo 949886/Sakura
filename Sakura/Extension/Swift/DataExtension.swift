@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import zlib
+import _zlib
 
 //MARK: Data
 

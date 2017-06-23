@@ -15,9 +15,8 @@ class ViewController2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let image = UIImage(named: "huaji")
-        let color = image?.getColor(atPixel: CGPoint(x: 29, y: 29))
-        print(color)
+//        let image = UIImage(named: "huaji")
+//        let color = image?.getColor(atPixel: CGPoint(x: 29, y: 29))
         
 //        button.layer.cornerRadius = 15
 //        button.layer.shadowOffset = .zero
@@ -56,16 +55,16 @@ class ViewController2: UIViewController {
 //            print(string)
 //        }
         
-        let compressed = "TEST".data(using: .utf8)?.gzip()
-        if let uncompressed = compressed?.ungzip() {
-            let string = String(data: uncompressed, encoding: .utf8)
-            print(string)
-        }
+//        let compressed = "TEST".data(using: .utf8)?.gzip()
+//        if let uncompressed = compressed?.ungzip() {
+//            let string = String(data: uncompressed, encoding: .utf8)
+//            print(string)
+//        }
         
-        let dict1 = ["a":"a"]
-        let dict2 = ["b":dict1]
-        let str = dict2.value(forKeyPath: "b")
-        print("\(str)")
+//        let dict1 = ["a":"a"]
+//        let dict2 = ["b":dict1]
+//        let str = dict2.value(forKeyPath: "b")
+//        print("\(str)")
         
     }
     

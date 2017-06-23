@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         button.textLayout = .bottom
         button.textLayoutSpacing = 20
 
-        UIApplication.shared.launchImage(forOrientation: .landscape)
+//        UIApplication.shared.launchImage(forOrientation: .landscape)
         
         let color = UIColor(hexString: "#FE960E")
         self.view.backgroundColor = color
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
 
     func handler(url: URL, parameters:[String:String]?) {
         let redirectURL = URLComponents(string: url.absoluteString)?.queryItems?.filter{ $0.name == "redirect_url" }.first?.value
-        debugPrint("HHHH: \(redirectURL)")
+        debugPrint("HHHH: \(String(describing: redirectURL))")
     }
     
 }

@@ -12,6 +12,46 @@ import UIKit
 
 extension UIColor
 {
+    public var red: CGFloat {
+        var red: CGFloat = 0
+        self.getRed(&red, green: nil, blue: nil, alpha: nil)
+        return red
+    }
+    
+    public var green: CGFloat {
+        var green: CGFloat = 0
+        self.getRed(nil, green: &green, blue: nil, alpha: nil)
+        return green
+    }
+    
+    public var blue: CGFloat {
+        var blue: CGFloat = 0
+        self.getRed(nil, green: nil, blue: &blue, alpha: nil)
+        return blue
+    }
+    
+    public var hue: CGFloat {
+        var hue: CGFloat = 0
+        self.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+        return hue
+    }
+    
+    public var saturation: CGFloat {
+        var saturation: CGFloat = 0
+        self.getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
+        return saturation
+    }
+    
+    public var brightness: CGFloat {
+        var brightness: CGFloat = 0
+        self.getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+        return brightness
+    }
+    
+    public var alpha: CGFloat {
+        return self.cgColor.alpha
+    }
+    
     public var hexString: String {
         guard let components = self.cgColor.components else { return "000000" }
         let r = components[0]

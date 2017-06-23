@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
 
   s.subspec "UI" do |ss|
     ss.source_files = "Sakura/UI/**/*.{h,swift}"
+    ss.dependency 'Sakura/Extension'
   end
 
   s.subspec "OC" do |ss|

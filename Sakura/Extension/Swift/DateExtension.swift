@@ -13,6 +13,7 @@ import Foundation
 extension Date
 {
     //Date components.
+    public var era : Int { return Date.calendar.component(.era, from: self) }
     public var year : Int { return Date.calendar.component(.year, from: self) }
     public var month : Int { return Date.calendar.component(.month, from: self) }
     public var day : Int { return Date.calendar.component(.day, from: self) }
@@ -34,9 +35,16 @@ extension Date
     
     // MARK: - Public
     
-    private func isLeapYear() -> Bool {
-        return (year % 4) != 0 && (year % 400) != 0
-    }
+    public func isLeapYear() -> Bool { return (year % 4) != 0 && (year % 400) != 0 }
+    public func isLeapMonth() -> Bool { return false }
+    public func isToday() -> Bool { return year == Date().year && month == Date().month && day == Date().day }
+    public func isPast() -> Bool { return self.compare(Date()) == .orderedAscending }
+    public func isFuture() -> Bool { return self.compare(Date()) == .orderedDescending }
+    
+//    func zeroOclock() -> Date {
+//        let date = self + 10000
+//        return Date()
+//    }
     
     // MARK: - Private
     
@@ -77,6 +85,9 @@ extension Date
     static var calendar = Calendar.current
     
     // MARK: - Public
+    
+    //About date format you can refer to:
+    //http://userguide.icu-project.org/formatparse/datetime
     
     static func parse(date: String, format: String) -> Date?
     {

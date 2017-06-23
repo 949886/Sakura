@@ -1,5 +1,5 @@
 
-module zlib [system] {
+module _zlib [system] {
     header "zlib-module.h"
     export *
 }

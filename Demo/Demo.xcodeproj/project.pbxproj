@@ -10,6 +10,7 @@
 		980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A4F231ECAEDA500836D4B /* ViewController2.swift */; };
 		98C9CEC81EE0090F00D28F98 /* test.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = 98C9CEC71EE0090F00D28F98 /* test.txt.gz */; };
 		DF6F79D11E9E06BE00C31AD9 /* UIFormSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F79D01E9E06BE00C31AD9 /* UIFormSubclass.swift */; };
+		DF77E5781EFA295E00DD3209 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF77E5771EFA295E00DD3209 /* ViewController3.swift */; };
 		DFC1BFD01E837CCA0066FB50 /* Sakura.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC1BFCD1E837BDA0066FB50 /* Sakura.framework */; };
 		DFC1BFD11E837CCA0066FB50 /* Sakura.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFC1BFCD1E837BDA0066FB50 /* Sakura.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFE7E4981DE847D10072C61D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7E4971DE847D10072C61D /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		980A4F231ECAEDA500836D4B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		98C9CEC71EE0090F00D28F98 /* test.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = test.txt.gz; sourceTree = "<group>"; };
 		DF6F79D01E9E06BE00C31AD9 /* UIFormSubclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFormSubclass.swift; sourceTree = "<group>"; };
+		DF77E5771EFA295E00DD3209 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		DFC1BFC71E837BDA0066FB50 /* Sakura.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sakura.xcodeproj; path = ../Sakura.xcodeproj; sourceTree = "<group>"; };
 		DFE7E4941DE847D10072C61D /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7E4971DE847D10072C61D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				DFE7E4971DE847D10072C61D /* AppDelegate.swift */,
 				DFE7E4991DE847D10072C61D /* ViewController.swift */,
 				980A4F231ECAEDA500836D4B /* ViewController2.swift */,
+				DF77E5771EFA295E00DD3209 /* ViewController3.swift */,
 				DFE7E49B1DE847D10072C61D /* Main.storyboard */,
 				DFE7E49E1DE847D10072C61D /* Assets.xcassets */,
 				DFE7E4A01DE847D10072C61D /* LaunchScreen.storyboard */,
@@ -386,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF77E5781EFA295E00DD3209 /* ViewController3.swift in Sources */,
 				DFE7E49A1DE847D10072C61D /* ViewController.swift in Sources */,
 				980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */,
 				DFE7E4981DE847D10072C61D /* AppDelegate.swift in Sources */,
@@ -555,7 +559,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LunarEclipse.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -570,7 +574,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LunarEclipse.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

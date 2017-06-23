@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Integer {
-    
+extension Integer
+{
     
     /// Digit of an integer. e.g. 12450 -> 5
     public var digit: Int {

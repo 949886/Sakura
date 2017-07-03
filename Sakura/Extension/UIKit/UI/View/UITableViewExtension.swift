@@ -66,3 +66,11 @@ extension UITableView
     }
     
 }
+
+
+extension UITableViewCell
+{
+    var tableView: UITableView? {
+        return nil
+    }
+}

@@ -15,7 +15,6 @@ extension String
     public var nsstring: NSString { return self as NSString }
     public var length: Int { return self.characters.count }
 
-    
     /// <#Description#>
     ///
     /// - Parameter index: <#index description#>
@@ -27,7 +26,6 @@ extension String
         let index = self.index(self.startIndex, offsetBy: String.IndexDistance(from))
         return self.substring(from: index)
     }
-    
     
     /// <#Description#>
     ///
@@ -41,6 +39,12 @@ extension String
         return self.substring(to: index)
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - from: <#from description#>
+    ///   - to: <#to description#>
+    /// - Returns: <#return value description#>
     public func subString(from: Int, to: Int) -> String {
         let string = self.subString(from: from)
         return string.subString(to: to - from + 1)
@@ -132,25 +136,13 @@ extension String
     
     /* Normalization */
     
-    @objc public enum UnicodeNormalizationForms: Int {
-        case D      // Characters are decomposed by canonical equivalence, and multiple combining characters are arranged in a specific order.
-        case C      // Characters are decomposed and then recomposed by canonical equivalence.
-        case KD     // Characters are decomposed by compatibility, and multiple combining characters are arranged in a specific order.
-        case KC     // Characters are decomposed by compatibility, then recomposed by canonical equivalence.
-    }
-    
     /// <#Description#>
     ///
     /// - Parameter form: <#form description#>
     /// - Returns: <#return value description#>
     public func normalize(to form: CFStringNormalizationForm) -> String {
         let mString = (self as NSString).mutableCopy() as! NSMutableString
-        switch form {
-        case .D: CFStringNormalize(mString, .D)
-        case .C: CFStringNormalize(mString, .C)
-        case .KD: CFStringNormalize(mString, .KD)
-        case .KC: CFStringNormalize(mString, .KC)
-        }
+        CFStringNormalize(mString, form)
         return mString as String
     }
 }

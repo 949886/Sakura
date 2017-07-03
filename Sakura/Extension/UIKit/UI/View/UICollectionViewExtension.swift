@@ -15,8 +15,8 @@ extension UICollectionView {
     public var defaultSelections : [IndexPath]? {
         set {
             setAssociatedObject(key: "defaultSelections", value: newValue)
-            DispatchQueue.main.async {
-                [unowned self] in
+            self.performBatchUpdates(nil) {
+                [unowned self] _ in
                 
                 //Not empty.
                 for indexPath in newValue ?? [] {

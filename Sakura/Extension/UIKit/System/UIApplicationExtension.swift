@@ -23,6 +23,14 @@ public extension UIApplication {
     public var buildVersion : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String }
     
     
+    /// Directories
+    
+    public static var homeDirectory: String { return NSHomeDirectory() }
+    public static var tmpDirectory: String { return NSTemporaryDirectory() }
+    public static var libraryDirectory: String { return NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first! }
+    public static var cacheDirectory: String { return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first! }
+    
+    
     /// Get launch image from Assets or LaunchScreen.stroyboard.
     ///
     /// - Parameter forOrientation: Portrait or landspace.

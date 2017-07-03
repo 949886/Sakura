@@ -8,6 +8,8 @@
 
 import Foundation
 
+#if swift(>=4)
+#else
 extension Integer
 {
     
@@ -22,3 +24,4 @@ extension Integer
     }
     
 }
+#endif

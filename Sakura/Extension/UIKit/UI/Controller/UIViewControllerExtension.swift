@@ -8,17 +8,17 @@
 
 import Foundation
 
-@objc enum UIViewControllerTransitionAnimation : Int {
-    case `default`
-    case none
-    case fade
-}
-
-extension UIViewController
-{
-    func present(_ viewControllerToPresent: UIViewController, animation: UIViewControllerTransitionAnimation, completion: (() -> Void)? = nil) {
-        
-    }
-    
-}
+//@objc enum UIViewControllerTransitionAnimation : Int {
+//    case `default`
+//    case none
+//    case fade
+//}
+//
+//extension UIViewController
+//{
+//    func present(_ viewControllerToPresent: UIViewController, animation: UIViewControllerTransitionAnimation, completion: (() -> Void)? = nil) {
+//
+//    }
+//
+//}
 

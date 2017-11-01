@@ -9,12 +9,18 @@
 import UIKit
 import Sakura
 
-class ViewController2: UIViewController {
-    
+class ViewController2: UIViewController
+{
+
     @IBOutlet weak var button: UIButtonEx!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        UIApplication.shared.jump(to: .safari("http://www.baidu.com"))
+//        UIApplication.shared.jump(to: .setting(.twitter))
+        UIApplication.shared.jump(to: .call(10086))
+        
 //        let image = UIImage(named: "huaji")
 //        let color = image?.getColor(atPixel: CGPoint(x: 29, y: 29))
         
@@ -34,9 +40,9 @@ class ViewController2: UIViewController {
 //        button.setShadowColor(UIColor.orange, for: .highlighted)
 //        button.setShadowColor(UIColor.orange, for: .selected)
         
-        button.cornerRadius = (15, 0, 0, 15)
-        button.backgroundColor = .orange
-        button.extraHitInsets = UIEdgeInsetsMake(999, 999, 999, 999)
+//        button.cornerRadius = (15, 0, 0, 15)
+//        button.backgroundColor = .orange
+//        button.extraHitInsets = UIEdgeInsetsMake(999, 999, 999, 999)
         
 //        if #available(iOS 10.0, *) {
 //            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
@@ -66,11 +72,15 @@ class ViewController2: UIViewController {
 //        let str = dict2.value(forKeyPath: "b")
 //        print("\(str)")
         
+        let button = UIButton(type: .system)
+        button.frame = CGRect(x: 50, y: 50, width: 50, height: 50)
+        button.setTitle("Dismiss", for: .normal)
+        button.addTarget(self, action: #selector(onClickButton(_:)), for: .touchUpInside)
+        self.view.addSubview(button)
     }
     
     @IBAction func onClickButton(_ sender: UIToggle) {
-        print("test")
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
-

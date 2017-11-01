@@ -10,7 +10,7 @@ import UIKit
 
 class UIGradientView: UIView
 {
-
+    
     override func draw(_ rect: CGRect) {
         // Drawing code
     }

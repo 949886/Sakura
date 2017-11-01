@@ -9,64 +9,79 @@
 import UIKit
 import Sakura
 
-extension Progress
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    var parent: Progress? {
-        
-        return (self as NSObject).value(forKey: "_parent") as? Progress
-    }
-}
-
-class ViewController: UIViewController {
-
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var greenLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var separator: UISeparator!
-    @IBOutlet weak var button: UIButton!
-
+    
+    let tableView = UITableView(frame: .zero, style: .grouped)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("氷菓".pinyin)
-        textField.placeholderColor = UIColor.red
-        separator.patternString = "20,20"
-        separator.pattern = [10, 10, 123]
+        self.view.backgroundColor = UIColor.white
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3000)) {
-            self.label.text = "ddd"
-            self.greenLabel.text = "xxx"
-            self.greenLabel.setNeedsDisplay()
-            self.view.setNeedsDisplay()
+        self.tableView.frame = self.view.bounds
+        self.tableView.backgroundColor = UIColor.white
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -44, 0)
+        self.tableView.estimatedRowHeight = 200
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        self.view.addSubview(tableView)
+        
+        let form = UIFormSubclass()
+        
+        if UIScreen.main.type == .p2436x1125 {
+            print("iPhone X")
+        } else {
+            print("iPhone")
         }
-        
-        print("STRING \("abc".subString(from: 1, to: 2))")
-        
-        button.textLayout = .bottom
-        button.textLayoutSpacing = 20
-
-//        UIApplication.shared.launchImage(forOrientation: .landscape)
-        
-        let color = UIColor(hexString: "#FE960E")
-        self.view.backgroundColor = color
-        
+        print("\(UIScreen.main.topbarHeight)")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-//        let controller = UIWebViewController(url: "http://cs.bukamanhua.com:8000/event/movie_ticket.php")
-//        controller.redirector = ["" : self.handler]
-//        self.present(controller, animated: true, completion: nil)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func handler(url: URL, parameters:[String:String]?) {
-        let redirectURL = URLComponents(string: url.absoluteString)?.queryItems?.filter{ $0.name == "redirect_url" }.first?.value
-        debugPrint("HHHH: \(String(describing: redirectURL))")
+    
+    // MARK: Delegate
+    
+    /* UITableViewDataSource */
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Content.items.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell.textLabel?.text = Content.items[indexPath.row]
+        cell.selectedBackgroundView = UIView()
+        return cell
+    }
+    
+    
+    /* UITableViewDelegate */
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            
+        }
+        if indexPath.row == 1 {
+            
+        }
+    }
+    
+    
+    class Content
+    {
+        static let items = ["Animated Transiting",
+                            "Downloader"]
+        
+    }
 }
-

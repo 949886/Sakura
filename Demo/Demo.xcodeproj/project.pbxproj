@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A4F231ECAEDA500836D4B /* ViewController2.swift */; };
+		9831D37F1F3ADED9005C170B /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831D37E1F3ADED9005C170B /* ViewController4.swift */; };
+		9831D3831F3AE10B005C170B /* AnimatedTransitingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831D3821F3AE10B005C170B /* AnimatedTransitingsViewController.swift */; };
 		98C9CEC81EE0090F00D28F98 /* test.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = 98C9CEC71EE0090F00D28F98 /* test.txt.gz */; };
+		98E7BDE51F725F2D00514C5E /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E7BDE41F725F2D00514C5E /* OCViewController.m */; };
 		DF6F79D11E9E06BE00C31AD9 /* UIFormSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F79D01E9E06BE00C31AD9 /* UIFormSubclass.swift */; };
 		DF77E5781EFA295E00DD3209 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF77E5771EFA295E00DD3209 /* ViewController3.swift */; };
 		DFC1BFD01E837CCA0066FB50 /* Sakura.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC1BFCD1E837BDA0066FB50 /* Sakura.framework */; };
@@ -76,7 +79,13 @@
 
 /* Begin PBXFileReference section */
 		980A4F231ECAEDA500836D4B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		9831D37E1F3ADED9005C170B /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		9831D3821F3AE10B005C170B /* AnimatedTransitingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTransitingsViewController.swift; sourceTree = "<group>"; };
+		987B80CC1F62AF1A00A4885D /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		98C9CEC71EE0090F00D28F98 /* test.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = test.txt.gz; sourceTree = "<group>"; };
+		98E7BDE21F725F2C00514C5E /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		98E7BDE31F725F2D00514C5E /* OCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
+		98E7BDE41F725F2D00514C5E /* OCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
 		DF6F79D01E9E06BE00C31AD9 /* UIFormSubclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFormSubclass.swift; sourceTree = "<group>"; };
 		DF77E5771EFA295E00DD3209 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		DFC1BFC71E837BDA0066FB50 /* Sakura.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sakura.xcodeproj; path = ../Sakura.xcodeproj; sourceTree = "<group>"; };
@@ -121,6 +130,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9831D3811F3AE0ED005C170B /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				9831D3821F3AE10B005C170B /* AnimatedTransitingsViewController.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		98C9CEC51EE0090F00D28F98 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +157,7 @@
 		DF6F79CD1E9E068900C31AD9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9831D3811F3AE0ED005C170B /* Transition */,
 				DF6F79CE1E9E068900C31AD9 /* Addtional */,
 			);
 			path = UI;
@@ -200,10 +218,15 @@
 				DFE7E4991DE847D10072C61D /* ViewController.swift */,
 				980A4F231ECAEDA500836D4B /* ViewController2.swift */,
 				DF77E5771EFA295E00DD3209 /* ViewController3.swift */,
-				DFE7E49B1DE847D10072C61D /* Main.storyboard */,
+				9831D37E1F3ADED9005C170B /* ViewController4.swift */,
 				DFE7E49E1DE847D10072C61D /* Assets.xcassets */,
+				DFE7E49B1DE847D10072C61D /* Main.storyboard */,
 				DFE7E4A01DE847D10072C61D /* LaunchScreen.storyboard */,
+				987B80CC1F62AF1A00A4885D /* Demo.entitlements */,
 				DFE7E4A31DE847D10072C61D /* Info.plist */,
+				98E7BDE31F725F2D00514C5E /* OCViewController.h */,
+				98E7BDE41F725F2D00514C5E /* OCViewController.m */,
+				98E7BDE21F725F2C00514C5E /* Demo-Bridging-Header.h */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -297,7 +320,13 @@
 					DFE7E4931DE847D10072C61D = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = WHFYY29THE;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					DFE7E4A71DE847D10072C61D = {
 						CreatedOnToolsVersion = 8.1;
@@ -389,10 +418,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9831D3831F3AE10B005C170B /* AnimatedTransitingsViewController.swift in Sources */,
 				DF77E5781EFA295E00DD3209 /* ViewController3.swift in Sources */,
+				9831D37F1F3ADED9005C170B /* ViewController4.swift in Sources */,
 				DFE7E49A1DE847D10072C61D /* ViewController.swift in Sources */,
 				980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */,
 				DFE7E4981DE847D10072C61D /* AppDelegate.swift in Sources */,
+				98E7BDE51F725F2D00514C5E /* OCViewController.m in Sources */,
 				DF6F79D11E9E06BE00C31AD9 /* UIFormSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,12 +585,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = WHFYY29THE;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LunarEclipse.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Demo/Demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -568,12 +603,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = WHFYY29THE;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LunarEclipse.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Demo/Demo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

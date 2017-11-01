@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double SakuraVersionNumber;
 FOUNDATION_EXPORT const unsigned char SakuraVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Sakura/PublicHeader.h>
-
-

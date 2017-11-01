@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Sakura
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print(Bundle.main.bundlePath)
+        
+        #if DEBUG
+            DispatchQueue.main.async { [unowned self] in
+                let fpsView = UISystemStatus();
+                fpsView.x = 25;
+                fpsView.centerY = self.window!.height - 75;
+                self.window!.addSubview(fpsView)
+            }
+        #endif
+
         return true
     }
 

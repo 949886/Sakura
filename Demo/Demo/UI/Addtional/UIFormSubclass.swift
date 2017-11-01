@@ -24,11 +24,9 @@ class UIFormSubclass: UIForm {
             --
             Header()
             -- 8 --
-            Row.defaultRow(text: "test")
+            Row.default(text: "test")
             -- 40 --
-            Row.defaultRow(text: "string")
-                .register(class: Cell.self, id: "cell")
-                .register(class: Cell.self, id: "")
+            Row.default(text: "string")
             -- 8 --
             Row() ~ items.count
             -- 8 --

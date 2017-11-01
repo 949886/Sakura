@@ -101,7 +101,7 @@ open class UIWebViewController: UIViewController, WKNavigationDelegate, WKScript
         
     }
     
-    //Whether redirect before navigation.
+    //Whether load before navigation.
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         //1
         ///debugPrint("navigationAction: \(navigationAction.request.url) URL: \(webView.url) ")

@@ -1,19 +1,19 @@
 Pod::Spec.new do |s|
 
   s.name = 'Sakura'
-  s.version = '0.0.8'
+  s.version = '0.0.9'
   s.summary = 'A beautiful and powerful frameworks like cherry blossom.'
-  s.homepage = 'http://eclipse.moe'
+  s.homepage = 'https://github.com/949886'
   s.license = { :type => 'Copyright', :text => 'Copyright (c) 2017 Yae Sakura. All rights reserved.' }
   s.authors = { 'Yae Sakura' => '949886@qq.com' }
   s.source = { :git => 'https://github.com/949886/Sakura.git', :branch => "master"}
   s.platform = :ios, '8.0'
   s.requires_arc = true
-  s.xcconfig    = { 'SWIFT_VERSION' => '3.0' }
-  s.default_subspec = 'Extension', 'UI'
+  s.xcconfig    = { 'SWIFT_VERSION' => '4.0' }
+  s.default_subspec = 'Core', 'UI'
 
-  s.subspec "Extension" do |ss|
-    ss.source_files = "Sakura/Extension/**/*.{h,swift}"
+  s.subspec "Core" do |ss|
+    ss.source_files = "Sakura/Core/**/*.{h,swift}"
     ss.preserve_path = 'Modules/*'
     ss.pod_target_xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/Sakura/Modules' }
     ss.frameworks = 'UIKit'

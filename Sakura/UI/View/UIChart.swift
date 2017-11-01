@@ -8,7 +8,8 @@
 
 import Foundation
 
-open class UIChart: UIView {
+open class UIChart: UIView
+{
     
 }
 

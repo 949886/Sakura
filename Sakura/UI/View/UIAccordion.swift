@@ -8,8 +8,7 @@
 
 import UIKit
 
-class UIAccordion: UIView
+open class UIAccordion: UIView
 {
-
-
+    
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+//MARK: - UIForm
+
 open class UIForm: UIView
 {
     
@@ -15,16 +17,26 @@ open class UIForm: UIView
         
     }
     
-    @objc(UIFormSection)
     open class Section: NSObject {
         public var form: UIForm!
     }
     
-    @objc(UIFormRow)
     open class Row: NSObject {
         public var form: UIForm!
         
-        public static func defaultRow(text: String) -> Row {
+        public override init() {
+            super.init()
+        }
+        
+        public init(type: Types) {
+            
+        }
+        
+        public static func `default`(text: String) -> Row {
+            return Row()
+        }
+        
+        public static func custom(text: String) -> Row {
             return Row()
         }
         
@@ -39,24 +51,40 @@ open class UIForm: UIView
         public func count(_ num: UInt) -> UIForm {
             return form
         }
+        
+        public enum Types {
+            case `default`(text: String, subtitle: String?, view: UIView?)
+            case `switch`()
+            case text
+            case table(cell: UITableViewCell, delegate: Any?)
+            case grid(cell: UICollectionViewCell, delegate: Any?)
+            case custom(cell: Cell, id: String)
+        }
     }
     
-    @objc(UIFormHeader)
+    open class Cell: UIView {
+        
+    }
+    
     open class Header: NSObject {
         public var form: UIForm!
     }
     
-    @objc(UIFormFooter)
     open class Footer: NSObject {
         public var form: UIForm!
     }
     
-    @objc(UIFormSpacing)
     fileprivate class Spacing: NSObject {
         
     }
     
+    
+    public typealias SimpleFuntion = (() -> Void)?
 }
+
+
+//MARK: - Operators
+
 
 infix operator -- : UIFormPrecedence
 infix operator ---- : UIFormPrecedence
@@ -108,5 +136,12 @@ public extension UIForm {
     public static func ~ (form: UIForm, count: Int) -> UIForm {
         return form
     }
+    
+}
+
+//MARK: - Delegate
+
+public protocol UIFormDelegate
+{
     
 }

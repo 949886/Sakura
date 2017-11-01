@@ -13,7 +13,7 @@ open class UIRadio: UIView
     @IBInspectable public var defaultSelection: Int = 0
     @IBInspectable public var multipleSelection: Bool = false
     
-    @IBOutlet public var delegate: UIRadioDelegate?
+    @IBInspectable weak public var delegate: UIRadioDelegate?
     
     private var buttons: [UIRadioButton] = []
     
@@ -36,6 +36,13 @@ open class UIRadio: UIView
         }
     }
     
+    public func button(at index: Int) -> UIRadioButton? {
+        if index < buttons.count {
+            return buttons[index]
+        }
+        return nil
+    }
+    
     @objc private func onClickRadioButton(sender: UIRadioButton) {
         if !multipleSelection {
             for button in buttons {
@@ -51,6 +58,12 @@ open class UIRadio: UIView
         
         delegate?.radioView?(self, didSelectItemAt: buttons.index(of: sender)!)
     }
+    
+    
+    public subscript(index: Int) -> UIRadioButton? {
+        return self.button(at: index)
+    }
+    
 }
 
 open class UIRadioButton: UIButtonEx
@@ -71,3 +84,4 @@ open class UIRadioButton: UIButtonEx
     @objc optional func radioView(_ radioView: UIRadio, didSelectItemAt index: Int)
     @objc optional func radioView(_ radioView: UIRadio, didDeselectItemAt index: Int)
 }
+

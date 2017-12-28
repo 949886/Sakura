@@ -190,47 +190,47 @@ extension UIImage
         return nil
     }
     
-    func flipped(_ type: FlipType) -> UIImage? {
-        return nil
-    }
-    
-    func rotated(angle: Double, closewise: Bool = true) -> UIImage? {
-        return nil
-    }
-    
-    func monochrome() -> UIImage? {
-        return nil
-    }
-    
-    enum FlipType {
-        case horizontal
-        case vertical
-    }
+//    func flipped(_ type: FlipType) -> UIImage? {
+//        return nil
+//    }
+//    
+//    func rotated(angle: Double, closewise: Bool = true) -> UIImage? {
+//        return nil
+//    }
+//    
+//    func monochrome() -> UIImage? {
+//        return nil
+//    }
+//    
+//    enum FlipType {
+//        case horizontal
+//        case vertical
+//    }
 }
 
 //MARK: - Gradient
 
-extension UIImage
-{
-    public enum GradientType
-    {
-        case linear(colors: [UIColor], loactions: [Float], startPoint: CGPoint, endPoint: CGPoint)
-        case bilinear(colors: [UIColor], colors2: [UIColor], loactions: [Float], loactions2: [Float], startPoint: CGPoint, endPoint: CGPoint, startPoint2: CGPoint, endPoint2: CGPoint)
-        case radial
-        case conical(colors: [UIColor], loactions: [Float], startAngle: Float, endAngle: Float)
-        case reflected
-        case diamond
-    }
-
-    public convenience init(gradientType: GradientType, size: CGSize) {
-        switch gradientType {
-        case .linear(let colors, let loactions, let startPoint, let endPoint):
-            break
-        default:
-            break
-        }
-
-        self.init()
-    }
-}
+//extension UIImage
+//{
+//    public enum GradientType
+//    {
+//        case linear(colors: [UIColor], loactions: [Float], startPoint: CGPoint, endPoint: CGPoint)
+//        case bilinear(colors: [UIColor], colors2: [UIColor], loactions: [Float], loactions2: [Float], startPoint: CGPoint, endPoint: CGPoint, startPoint2: CGPoint, endPoint2: CGPoint)
+//        case radial
+//        case conical(colors: [UIColor], loactions: [Float], startAngle: Float, endAngle: Float)
+//        case reflected
+//        case diamond
+//    }
+//
+//    public convenience init(gradientType: GradientType, size: CGSize) {
+//        switch gradientType {
+//        case .linear(let colors, let loactions, let startPoint, let endPoint):
+//            break
+//        default:
+//            break
+//        }
+//
+//        self.init()
+//    }
+//}
 

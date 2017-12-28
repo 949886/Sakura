@@ -8,7 +8,8 @@
 
 import Foundation
 
-extension UICollectionView {
+extension UICollectionView
+{
     
     /// Default selections of collecion view.
     /// 'nil' is selecte none. [] is select all.
@@ -18,7 +19,7 @@ extension UICollectionView {
             self.performBatchUpdates(nil) {
                 [unowned self] _ in
                 
-                //Not empty.
+                //Not nil.
                 for indexPath in newValue ?? [] {
                     self.selectItem(at: indexPath, animated: false, scrollPosition: [])
                 }

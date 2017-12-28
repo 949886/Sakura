@@ -12,26 +12,38 @@ extension UIScreen
 {
     
     /// Length of one pixel.
-    public static var pixel: CGFloat {
+    @objc public static var pixel: CGFloat {
         return 1.0 / UIScreen.main.scale
     }
     
-    public var width: CGFloat {
+    // Screen width.
+    @objc public var width: CGFloat {
         return self.bounds.size.width
     }
     
-    public var height: CGFloat {
+    // Screen height.
+    @objc public var height: CGFloat {
         return self.bounds.size.height
     }
     
-    public var topbarHeight: CGFloat {
+    /// Status bar height (Common: 20, iPhoneX: 44)
+    @objc public var statusBarHeight: CGFloat {
+        struct Static {
+            static var height: CGFloat = UIScreen.main.type == .p2436x1125 ? 44.0 : 20.0
+        }
+        return Static.height
+    }
+    
+    /// Top bar height (Common: 64, iPhoneX: 88)
+    @objc public var topBarHeight: CGFloat {
         struct Static {
             static var height: CGFloat = UIScreen.main.type == .p2436x1125 ? 88.0 : 64.0
         }
         return Static.height
     }
     
-    public var tabbarHeight: CGFloat {
+    /// Tab bar height (Common: 49, iPhoneX: 83)
+    @objc public var tabBarHeight: CGFloat {
         struct Static {
             static var height: CGFloat = UIScreen.main.type == .p2436x1125 ? 83.0 : 49.0
         }

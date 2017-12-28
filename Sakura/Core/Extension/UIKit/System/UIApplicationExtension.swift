@@ -11,22 +11,37 @@ import Foundation
 public extension UIApplication
 {
     
-    /// Application infomation.
-    
-    public var bundleName : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String }
-    public var bundleID : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String }
-    public var version : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String }
-    public var buildVersion : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String }
-    
-    
     /// Directories
     
-    public static var homeDirectory: String { return NSHomeDirectory() }
-    public static var tmpDirectory: String { return NSTemporaryDirectory() }
-    public static var libraryDirectory: String { return NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first! }
-    public static var cacheDirectory: String { return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first! }
-    public static var documentDirectory: String { return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! }
+    @objc public static var homeDirectory: String { return NSHomeDirectory() }
+    @objc public static var tmpDirectory: String { return NSTemporaryDirectory() }
+    @objc public static var libraryDirectory: String { return NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first! }
+    @objc public static var cacheDirectory: String { return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first! }
+    @objc public static var documentDirectory: String { return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! }
     
+    /// Application infomation.
+    
+    @objc public var bundleName : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String }
+    @objc public var bundleID : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as! String }
+    @objc public var version : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String }
+    @objc public var buildVersion : String { return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String }
+    
+    
+    /// Web
+    
+    // Default User-Agent of WebView. WebView will use this as default User-Agent.
+    @objc public var userAgent: String {
+        get {
+            if let ua = UserDefaults.standard.value(forKey: "UserAgent") as? String {
+                return ua
+            } else {
+                let ua = UIWebView().stringByEvaluatingJavaScript(from: "navigator.userAgent")!
+                UserDefaults.standard.register(defaults: ["UserAgent" : ua])
+                return ua
+            }
+        }
+        set { UserDefaults.standard.register(defaults: ["UserAgent" : newValue]) }
+    }
     
     /// Jump to system page.
     ///
@@ -53,7 +68,7 @@ public extension UIApplication
     /// Open application with url.
     ///
     /// - Parameter url: Jump URL.
-    public func jump(url: String) {
+    @objc public func jump(url: String) {
         if  let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
             let url = URL(string: urlString) {
             if self.canOpenURL(url) {
@@ -66,7 +81,7 @@ public extension UIApplication
     ///
     /// - Parameter forOrientation: Portrait or landspace.
     /// - Returns: Launch screen image for specific orientation.
-    public func launchImage(forOrientation orientation: LaunchImageOrientation) -> UIImage? {
+    @objc public func launchImage(forOrientation orientation: LaunchImageOrientation) -> UIImage? {
         
         //Get launch image from assets.
         let launchImages = Bundle.main.infoDictionary?["UILaunchImages"] as? [[String:String]]
@@ -102,15 +117,15 @@ public extension UIApplication
         
         return nil
     }
- 
     
-    /// <#Description#>
+    
+    /// Jump to ...
     ///
-    /// - safari: <#safari description#>
-    /// - setting: <#setting description#>
-    /// - telephone: <#telephone description#>
-    /// - messages: <#messages description#>
-    /// - mail: <#mail description#>
+    /// - safari: Jump to external safari.
+    /// - setting: Jump to setting app of device.
+    /// - telephone: Jump to call.
+    /// - messages: Jump to message.
+    /// - mail: Jumo to email.
     public enum ApplicationJumpType {
         case call(Int)
         case mail(String)
@@ -141,7 +156,7 @@ public extension UIApplication
             case twitter = "App-prefs:root=TWITTER"                         //Setting - Twitter
             case facebook = "App-prefs:root=FACEBOOK"                       //Setting - Facebook
             case photos = "App-prefs:root=Photos"
-
+            
             case date = "App-prefs:root=General&path=DATE_AND_TIME"                 //Setting - General - Date
             case keyboard = "App-prefs:root=General&path=Keyboard"                  //Setting - General - Keyboard
             case language = "App-prefs:root=General&path=Language_AND_Region"       //Setting - General - Language
@@ -153,14 +168,16 @@ public extension UIApplication
             //case softwareUpdateLink = "App-prefs:root=General&path=SOFTWARE_UPDATE_LINK"
             //case accessibility = "App-prefs:root=General&path=ACCESSIBILITY"
             //case storage = "App-prefs:root=CASTLE&path=STORAGE_AND_BACKUP"
-
+            
             case appSetting = "app-settings:"                           //App setting
             case notifications = "App-prefs:root=NOTIFICATIONS_ID"      //App notification (Setting - Notification - Self)
         }
     }
+    
 }
 
 @objc public enum LaunchImageOrientation: Int {
     case portrait
     case landscape
 }
+

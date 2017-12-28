@@ -10,14 +10,28 @@ import Foundation
 
 extension DispatchQueue
 {
-    private static var _onceTracker = [String]()
     
-    public static func once(token: String, block:()->Void) {
+    /// Executes a block object once and only once for the lifetime of an application with a specific identifier.
+    ///
+    /// - Parameters:
+    ///   - token: Block identifier.
+    ///   - block: The block to execute once.
+    public static func once(token: String, execute closure:()->Void) {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         if _onceTracker.contains(token) { return }
         _onceTracker.append(token)
-        block()
+        closure()
+    }
+    private static var _onceTracker = [String]()
+    
+    /// Executes a block after a certain time.
+    ///
+    /// - Parameters:
+    ///   - milliseconds: Delay time (millisecond).
+    ///   - closure: The block to execute once.
+    public func asyncAfter(_ milliseconds: TimeInterval, execute closure: @escaping () -> Void) {
+        asyncAfter(deadline: .now() + milliseconds * 0.001, execute: closure)
     }
     
 }

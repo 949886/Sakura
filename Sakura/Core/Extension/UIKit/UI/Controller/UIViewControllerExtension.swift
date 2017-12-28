@@ -11,11 +11,16 @@ import Foundation
 extension UIViewController
 {
     
-    @objc open static var topMost: UIViewController? {
+    /// Top most view controller in hierachy.
+    @objc open class var top: UIViewController? {
         let rootViewController = UIApplication.shared.windows.first?.rootViewController
         return topMost(of: rootViewController)
     }
     
+}
+
+extension UIViewController
+{
     private static func topMost(of viewController: UIViewController?) -> UIViewController? {
         
         // UITabBarController
@@ -44,5 +49,8 @@ extension UIViewController
         
         return viewController
     }
+}
+
+public protocol UIViewControllerNavigationDelegate: class {
     
 }

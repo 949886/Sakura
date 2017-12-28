@@ -12,15 +12,13 @@ import UIKit
 
 public extension UIView
 {
+    /// Set extra hit test area.
+    /// e.g. (-8, -8, -8, -8) will extend 8 point of hit area of all direction.
+    /// e.g. (8, 8, 8, 8) will shrink 8 point of hit area of all direction.
     @objc public var extraHitInsets: UIEdgeInsets {
         get { return getAssociatedObject(key: "extraHitInsets") as? UIEdgeInsets ?? .zero }
         set { UIView.swizzling(); setAssociatedObject(key: "extraHitInsets", value: newValue) }
     }
-    
-//    public var cornerRadius: (CGFloat, CGFloat, CGFloat, CGFloat) {
-//        get { return getAssociatedObject(key: "cornerRadius") as? (CGFloat, CGFloat, CGFloat, CGFloat) ?? (0.0, 0.0, 0.0, 0.0) }
-//        set { UIView.swizzling(); setAssociatedObject(key: "cornerRadius", value: newValue) }
-//    }
 }
 
 //MARK: - Layout
@@ -63,10 +61,10 @@ extension UIView
         set { self.frame = CGRect(origin: self.frame.origin, size: size) }
     }
     
-    /// <#Description#>
+    /// Get constraint by identifier.
     ///
-    /// - Parameter identifier: <#identifier description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter identifier: Constraint identifier
+    /// - Returns: A constraint.
     @objc func getConstraint(by identifier: String?) -> NSLayoutConstraint? {
         return self.constraints.filter { $0.identifier == identifier }.first
     }
@@ -86,6 +84,7 @@ extension UIView
     
     //MARK: Controllers
     
+    // Get nearest view controller of this view.
     @objc public var viewController: UIViewController? {
         var view: UIView? = self
         while view != nil {
@@ -97,6 +96,7 @@ extension UIView
         return nil
     }
     
+    // Get nearest navigation controller of this view.
     @objc public var navigationController: UINavigationController? {
         var view: UIView? = self
         while view != nil {
@@ -112,6 +112,7 @@ extension UIView
         return nil
     }
     
+    // Get deepest tab bar controller of this view.
     @objc public var tabBarController: UITabBarController? {
         var tabBarController: UITabBarController? = nil
         
@@ -139,19 +140,19 @@ extension UIView
     
 }
 
-// MARK: - Common
+// MARK: - Readonly
 
 extension UIView
 {
-    
-    public func clearSubviews() {
-        for subview in subviews {
-            subview.removeFromSuperview()
+    @available(iOS 9.0, *)
+    var layoutGuide: UILayoutGuide {
+        if self.layoutGuides.count == 0 {
+            let layoutGuide = UILayoutGuide()
+            self.addLayoutGuide(layoutGuide)
+            return layoutGuide
         }
+        return self.layoutGuides.first!
     }
-    
-    //MARK: Visual
-    
 }
 
 //MARK: - Image
@@ -162,7 +163,7 @@ extension UIView
     ///
     /// - Returns: A image from current view.
     @objc public func captureImage() -> UIImage? {
-        UIGraphicsBeginImageContext(self.bounds.size)
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
         self.layer.render(in: UIGraphicsGetCurrentContext()!)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
@@ -172,6 +173,13 @@ extension UIView
 
 extension UIView
 {
+    
+    /// Remove all subviews of self.
+    public func clearSubviews() {
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+    }
     
     /// Traverse all subviews including self.
     @objc public func traverseSubviews(_ callback: (UIView) -> Void) {
@@ -199,9 +207,128 @@ extension UIView
             subview.printHierarchy()
         }
         Static.depth -= 1
-        
     }
     
+}
+
+//MARK: - Corner Mask
+
+extension UIView
+{
+    
+    /// Corner mask radius.
+    @objc public var omaskRadius: CGFloat {
+        get { return getAssociatedObject(key: "omaskRadius") as? CGFloat ?? (self.bounds.width * 0.5) }
+        set {
+            setAssociatedObject(key: "omaskRadius", value: newValue)
+            needUpdateOmask()
+        }
+    }
+    
+    /// Corner mask background color.
+    @objc public var omaskColor: UIColor {
+        get { return getAssociatedObject(key: "omaskColor") as? UIColor ?? .white }
+        set {
+            setAssociatedObject(key: "omaskColor", value: newValue)
+            needUpdateOmask()
+        }
+    }
+    
+    /// Corner mask border color.
+    @objc public var omaskBorderColor: UIColor {
+        get { return getAssociatedObject(key: "omaskBorderColor") as? UIColor ?? .gray }
+        set {
+            setAssociatedObject(key: "omaskBorderColor", value: newValue)
+            needUpdateOmask()
+        }
+    }
+    
+    /// Corner mask border width.
+    @objc public var omaskBorderWidth: CGFloat {
+        get { return getAssociatedObject(key: "omaskBorderWidth") as? CGFloat ?? 0 }
+        set {
+            setAssociatedObject(key: "omaskBorderWidth", value: newValue)
+            needUpdateOmask()
+        }
+    }
+    
+    /// Corner mask image view.
+    @objc public var omaskImageView: UIImageView {
+        get {
+            if let imageView = getAssociatedObject(key: "omaskImageView") as? UIImageView {
+                return imageView
+            }
+            let imageView = UIImageView(frame: self.bounds)
+            imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            imageView.image = UIView.omaskImage(withRadius: omaskRadius, cornerColor: omaskColor, borderWidth: omaskBorderWidth, borderColor: omaskBorderColor)
+            self.omaskImageView = imageView
+            return imageView
+        }
+        set {
+            setAssociatedObject(key: "omaskImageView", value: newValue)
+        }
+    }
+    
+    private var isNeedUpdateOmask: Bool {
+        get { return getAssociatedObject(key: "needUpdateOmask") as? Bool ?? false }
+        set {
+            //Get rid of reduplicative task.
+            if newValue && isNeedUpdateOmask != newValue {
+                updateOmask()
+            }
+            
+            setAssociatedObject(key: "needUpdateOmask", value: newValue)
+        }
+    }
+    
+    private func needUpdateOmask() {
+        isNeedUpdateOmask = true
+    }
+    
+    private func updateOmask() {
+        //Update mask image view.
+        DispatchQueue.main.async { [weak self] in
+            if self == nil {
+                return
+            }
+            
+            let radius = self!.omaskRadius
+            let color = self!.omaskColor
+            let borderWidth = self!.omaskBorderWidth
+            let borderColor = self!.omaskBorderColor
+            
+            if radius <= 0 {
+                self!.omaskImageView.removeFromSuperview()
+            } else if self!.omaskImageView.superview == nil {
+                self!.addSubview(self!.omaskImageView)
+            }
+            
+            self!.omaskImageView.image = UIView.omaskImage(withRadius: radius, cornerColor: color, borderWidth: borderWidth, borderColor: borderColor)
+            self!.isNeedUpdateOmask = false
+        }
+    }
+    
+    public class func omaskImage(withRadius radius: CGFloat, cornerColor color: UIColor, borderWidth: CGFloat, borderColor: UIColor) -> UIImage? {
+        let boundingRect = CGRect(x: 0, y: 0, width: radius * 2 + borderWidth + 1, height: radius * 2 + borderWidth + 1)
+        let innerRect: CGRect = UIEdgeInsetsInsetRect(boundingRect, UIEdgeInsetsMake(borderWidth / 2, borderWidth / 2, borderWidth / 2, borderWidth / 2))
+        UIGraphicsBeginImageContextWithOptions(boundingRect.size, false, 0)
+        if let context = UIGraphicsGetCurrentContext() {
+            context.addRect(boundingRect)
+            let path = CGPath(roundedRect: innerRect, cornerWidth: radius, cornerHeight: radius, transform: nil)
+            context.addPath(path)
+            context.setFillColor(color.cgColor)
+            context.setStrokeColor(color.cgColor)
+            context.setLineWidth(borderWidth)
+            context.drawPath(using: .eoFillStroke)
+            context.addPath(path)
+            context.setStrokeColor(borderColor.cgColor)
+            context.strokePath()
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return image?.resizableImage(withCapInsets: UIEdgeInsetsMake(radius, radius, radius, radius))
+        }
+        return nil
+    }
 }
 
 //MARK: - Swizzling

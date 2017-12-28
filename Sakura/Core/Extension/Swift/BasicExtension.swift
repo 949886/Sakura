@@ -12,7 +12,9 @@ import Foundation
 
 #if swift(>=4)
     
-extension BinaryInteger {
+extension BinaryInteger
+{
+    
     /// Cast Integer to CGFloat.
     public var f: CGFloat {
         switch self {
@@ -30,6 +32,7 @@ extension BinaryInteger {
         }
     }
     
+    /// Digits of integer. e.g. 12450 -> 5, 233 -> 3
     public var digit: Int {
         var num = self, digit = 0
         
@@ -130,7 +133,7 @@ extension Double
 extension Bool
 {
     init?(_ string: String) {
-        self.init(exactly: NSNumber(value: Int("0") ?? 0))
+        self.init(exactly: NSNumber(value: Int(string) ?? 0))
     }
 }
 #else

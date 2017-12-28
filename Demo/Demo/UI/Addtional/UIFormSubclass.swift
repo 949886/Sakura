@@ -17,14 +17,16 @@ class UIFormSubclass: UIForm {
     
     var items = [String]()
     
-    override func onCreate(form: inout UIForm) {
+    override func onCreate(form: UIForm) {
         
         form --
             Section()
             --
             Header()
             -- 8 --
-            Row.default(text: "test")
+            Row.default(text: "aaa") {
+                $0.form
+            }
             -- 40 --
             Row.default(text: "string")
             -- 8 --

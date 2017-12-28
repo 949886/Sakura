@@ -20,7 +20,7 @@ extension UIViewController
             if  let from = context.viewController(forKey: .from),
                 let to = context.viewController(forKey: .to) {
                 
-                if true {
+                if to.view.superview == nil {
                     context.containerView.addSubview(to.view)
                     context.containerView.sendSubview(toBack: to.view)
                 }
@@ -32,7 +32,7 @@ extension UIViewController
                     from.view.alpha = 0
                     to.view.alpha = 1
                 }, completion: { bool in
-                    from.view.alpha = 1.0;
+                    from.view.alpha = 1.0
                     context.completeTransition(true)
                 })
             }

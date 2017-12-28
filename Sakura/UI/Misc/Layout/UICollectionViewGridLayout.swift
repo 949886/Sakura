@@ -8,8 +8,13 @@
 
 import Foundation
 
+@objcMembers
 open class UICollectionViewGridLayout: UICollectionViewLayout
 {
+    public var columnCount = 3 { didSet { invalidateLayout() } }
+    
+    // MARK: - Override
+    
     open override var collectionViewContentSize: CGSize {
         return self.collectionView?.bounds.size ?? .zero
     }
@@ -25,4 +30,16 @@ open class UICollectionViewGridLayout: UICollectionViewLayout
     open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return nil
     }
+    
+    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+}
+
+@objc protocol UICollectionViewGridLayoutDelegate: UICollectionViewDelegate {
+    @objc func collectionView(_ collectionView: UICollectionView,
+                        heightForRow: Int) -> CGFloat
+    @objc optional func collectionView(_ collectionView: UICollectionView,
+                                       rowSpacingForSection section: Int) -> CGFloat
+    
 }

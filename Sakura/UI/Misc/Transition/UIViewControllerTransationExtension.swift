@@ -15,6 +15,7 @@ extension UIViewController
     public enum TransitionAnimation {
         case `default`
         case none
+        case present(edge: UIEdgeInsets)
         case dim(alpha: Float)
         case fade(duration: TimeInterval)
         case custom(_: String)
@@ -70,6 +71,13 @@ extension UIViewController
         }
 //        controller.transitioningDelegate = transitioningDelegate
     }
+    
+    public func dismiss(animation: TransitionAnimation, completion: (() -> Void)? = nil) {
+        if self.navigationController != nil {
+            self.navigationController?.popViewController(animated: true)
+        } else { self.dismiss(animated: true, completion: nil) }
+    }
+    
 }
 
 //MARK: - UINavigationController
@@ -96,6 +104,38 @@ extension UINavigationController
             self.push(viewController: controller, animated: false, completion: completion)
         } else {
             self.push(viewController: controller, animated: true, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    open func pop(animation: TransitionAnimation, completion: (() -> Void)? = nil) -> UIViewController? {
+        self.delegate = {
+            let delegate = UINavigationControllerTransationManager.instance
+            if !(self.delegate is UINavigationControllerTransationManager) {
+                delegate.delegate = self.delegate
+            }
+            return delegate
+        }()
+        self.navigationTranstionDelegate = UINavigationControllerTransationManager.instance
+        
+        var secondController: UIViewController?
+        for i in 0..<self.viewControllers.count {
+            if i == self.viewControllers.count - 2 {
+                secondController = self.viewControllers[i]
+                secondController?.transitionAnimation = animation
+            }
+        }
+        
+        if case .none = animation {
+            return self.pop(animated: false, completion: {
+                completion?()
+                secondController?.transitionAnimation = .default
+            })
+        } else {
+            return self.pop(animated: true, completion: {
+                completion?()
+                secondController?.transitionAnimation = .default
+            })
         }
     }
     

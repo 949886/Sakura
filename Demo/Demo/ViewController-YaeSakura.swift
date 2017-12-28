@@ -10,6 +10,12 @@ import UIKit
 import CoreData
 import Sakura
 
+class Image: UIImage {
+    deinit {
+        print("Image deinit.")
+    }
+}
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     
@@ -49,17 +55,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         layout.columnCount = 3
         layout.rowCount = 2
         
-//        let image = UIImage(named:"go")!
-        let path = Bundle.main.path(forResource: "v2-7f66997517a5471f4bc6b1070e1d835f_r", ofType: "png", inDirectory: nil)
-//        let image = UIImage.init(contentsOfFile: path!)!
-//        let color = image.averageColor()
-        let image = UIImage(data: try! Data(contentsOf: URL(string:"http://v2ex.assets.uxengine.net/gravatar/c96cc228334b6802da7040fa82273bd6?s=73&d=retro")!))!
-        let imageView = UIImageView()
-        self.view.addSubview(imageView)
-        DispatchQueue.main.async {
-            imageView.image = image
-            let color = image.color(at: CGPoint(x: 0, y: 0))
-        }
+        let image = UIImage(named:"go")!
+        let color = image.averageColor()
 //
 //        let context = UIManagedDocument.default.managedObjectContext
 //        let info = NSEntityDescription.insertNewObject(forEntityName: "LocalHistoryInfo", into: context) as! LocalHistoryInfo
@@ -75,7 +72,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //                print(result.cover)
 //            }
 //        }
-        
     }
     
     override func viewDidLayoutSubviews() {

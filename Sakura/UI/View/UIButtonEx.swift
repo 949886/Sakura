@@ -11,14 +11,15 @@ import UIKit
 open class UIButtonEx: UIButton
 {
     
-    public var cornerRadius = (topLeft: 0.0, topRight: 0.0, bottomRight: 0.0, bottomLeft: 0.0) {
-        didSet { setNeedsDisplay() }
-    }
+    //MARK: Properties
+    
+    public var cornerRadius = (topLeft: 0.0, topRight: 0.0, bottomRight: 0.0, bottomLeft: 0.0) { didSet { setNeedsDisplay() } }
     
     private var isTouchInsidePre: Bool = false
     
     private var borderColorMapper = [UInt:UIColor]()
     private var shadowColorMapper = [UInt:UIColor]()
+    
     
     //MARK: Override
     
@@ -114,6 +115,7 @@ open class UIButtonEx: UIButton
             }
         }
         
+        // Check extra properties.
         if let borderColor = borderColorMapper[self.state.rawValue] {
             self.layer.borderColor = borderColor.cgColor
         }

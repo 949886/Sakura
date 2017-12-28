@@ -19,7 +19,6 @@ class ViewController2: UIViewController
         
 //        UIApplication.shared.jump(to: .safari("http://www.baidu.com"))
 //        UIApplication.shared.jump(to: .setting(.twitter))
-        UIApplication.shared.jump(to: .call(10086))
         
 //        let image = UIImage(named: "huaji")
 //        let color = image?.getColor(atPixel: CGPoint(x: 29, y: 29))
@@ -73,14 +72,31 @@ class ViewController2: UIViewController
 //        print("\(str)")
         
         let button = UIButton(type: .system)
-        button.frame = CGRect(x: 50, y: 50, width: 50, height: 50)
+        button.frame = CGRect(x: 50, y: 50, width: 100, height: 50)
         button.setTitle("Dismiss", for: .normal)
         button.addTarget(self, action: #selector(onClickButton(_:)), for: .touchUpInside)
         self.view.addSubview(button)
+        
+        let button2 = UIButton(type: .system)
+        button2.frame = CGRect(x: 150, y: 50, width: 100, height: 50)
+        button2.setTitle("Present", for: .normal)
+        button2.addTarget(self, action: #selector(onPresentButtonClick(_:)), for: .touchUpInside)
+        self.view.addSubview(button2)
     }
     
-    @IBAction func onClickButton(_ sender: UIToggle) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func onClickButton(_ sender: UIButton) {
+        if self.navigationController != nil {
+            self.navigationController?.pop(animation: .fade(duration: 1))
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func onPresentButtonClick(_ sender: UIButton) {
+        let controller = ViewController2()
+        controller.view.backgroundColor = UIColor(hex: UInt(arc4random() | 0x000000FF))
+//        controller.transitionAnimation = .fade(duration: 0.5)
+        self.present(controller, animation: .fade(duration: 0.5))
     }
     
 }

@@ -134,7 +134,7 @@ public class UINavigationControllerTransationManager: NSObject, UINavigationCont
     }
     
     public func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation {
-        return delegate?.navigationControllerPreferredInterfaceOrientationForPresentation?(navigationController) ?? .unknown
+        return delegate?.navigationControllerPreferredInterfaceOrientationForPresentation?(navigationController) ?? .portrait
     }
     
     //MARK: KVO

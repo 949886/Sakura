@@ -10,6 +10,7 @@
 		980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A4F231ECAEDA500836D4B /* ViewController2.swift */; };
 		9831D37F1F3ADED9005C170B /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831D37E1F3ADED9005C170B /* ViewController4.swift */; };
 		9831D3831F3AE10B005C170B /* AnimatedTransitingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9831D3821F3AE10B005C170B /* AnimatedTransitingsViewController.swift */; };
+		9866DE2F1FCFF081004CC761 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9866DE2D1FCFF081004CC761 /* Models.xcdatamodeld */; };
 		98C9CEC81EE0090F00D28F98 /* test.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = 98C9CEC71EE0090F00D28F98 /* test.txt.gz */; };
 		98E7BDE51F725F2D00514C5E /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E7BDE41F725F2D00514C5E /* OCViewController.m */; };
 		DF6F79D11E9E06BE00C31AD9 /* UIFormSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F79D01E9E06BE00C31AD9 /* UIFormSubclass.swift */; };
@@ -81,6 +82,7 @@
 		980A4F231ECAEDA500836D4B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		9831D37E1F3ADED9005C170B /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		9831D3821F3AE10B005C170B /* AnimatedTransitingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTransitingsViewController.swift; sourceTree = "<group>"; };
+		9866DE2E1FCFF081004CC761 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		987B80CC1F62AF1A00A4885D /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		98C9CEC71EE0090F00D28F98 /* test.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = test.txt.gz; sourceTree = "<group>"; };
 		98E7BDE21F725F2C00514C5E /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				DFE7E4A01DE847D10072C61D /* LaunchScreen.storyboard */,
 				987B80CC1F62AF1A00A4885D /* Demo.entitlements */,
 				DFE7E4A31DE847D10072C61D /* Info.plist */,
+				9866DE2D1FCFF081004CC761 /* Models.xcdatamodeld */,
 				98E7BDE31F725F2D00514C5E /* OCViewController.h */,
 				98E7BDE41F725F2D00514C5E /* OCViewController.m */,
 				98E7BDE21F725F2C00514C5E /* Demo-Bridging-Header.h */,
@@ -424,6 +427,7 @@
 				DFE7E49A1DE847D10072C61D /* ViewController.swift in Sources */,
 				980A4F241ECAEDA500836D4B /* ViewController2.swift in Sources */,
 				DFE7E4981DE847D10072C61D /* AppDelegate.swift in Sources */,
+				9866DE2F1FCFF081004CC761 /* Models.xcdatamodeld in Sources */,
 				98E7BDE51F725F2D00514C5E /* OCViewController.m in Sources */,
 				DF6F79D11E9E06BE00C31AD9 /* UIFormSubclass.swift in Sources */,
 			);
@@ -713,6 +717,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9866DE2D1FCFF081004CC761 /* Models.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9866DE2E1FCFF081004CC761 /* Models.xcdatamodel */,
+			);
+			currentVersion = 9866DE2E1FCFF081004CC761 /* Models.xcdatamodel */;
+			path = Models.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DFE7E48C1DE847D10072C61D /* Project object */;
 }

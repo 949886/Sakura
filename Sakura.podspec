@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'Sakura'
-  s.version = '0.0.9'
+  s.version = '0.0.10'
   s.summary = 'A beautiful and powerful frameworks like cherry blossom.'
   s.homepage = 'https://github.com/949886'
   s.license = { :type => 'Copyright', :text => 'Copyright (c) 2017 Yae Sakura. All rights reserved.' }
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
   s.subspec "UI" do |ss|
     ss.source_files = "Sakura/UI/**/*.{h,swift}"
-    ss.dependency 'Sakura/Extension'
+    ss.dependency 'Sakura/Core'
   end
 
   s.subspec "OC" do |ss|

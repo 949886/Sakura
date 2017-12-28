@@ -131,8 +131,15 @@ extension UIButton {
                 labelEdgeInsets = UIEdgeInsetsMake(0, spacing / 2.0, 0, -spacing / 2.0)
             }
             
-            self.titleEdgeInsets = labelEdgeInsets
-            self.imageEdgeInsets = imageEdgeInsets
+            self.titleEdgeInsets = UIEdgeInsetsMake(self.titleEdgeInsets.top + labelEdgeInsets.top,
+                                                    self.titleEdgeInsets.left + labelEdgeInsets.left,
+                                                    self.titleEdgeInsets.bottom + labelEdgeInsets.bottom,
+                                                    self.titleEdgeInsets.right + labelEdgeInsets.right)
+            self.imageEdgeInsets = UIEdgeInsetsMake(self.imageEdgeInsets.top + imageEdgeInsets.top,
+                                                    self.imageEdgeInsets.left + imageEdgeInsets.left,
+                                                    self.imageEdgeInsets.bottom + imageEdgeInsets.bottom,
+                                                    self.imageEdgeInsets.right + imageEdgeInsets.right)
+            
         }
     }
     

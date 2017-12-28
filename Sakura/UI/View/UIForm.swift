@@ -13,19 +13,62 @@ import Foundation
 open class UIForm: UIView
 {
     
-    open func onCreate(form: inout UIForm) {
+    let tableView = UITableView(frame: .zero, style: .grouped)
+    
+    public let sections = [Section]()
+    
+    //MARK: Initialization
+    
+    public init() {
+        super.init(frame: .zero)
+        self.initialize()
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.initialize()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.initialize()
+    }
+    
+    private func initialize() {
+        self.onCreate(form: self)
+    }
+    
+    open func onCreate(form: UIForm) {
         
     }
     
-    open class Section: NSObject {
-        public var form: UIForm!
-    }
-    
-    open class Row: NSObject {
+    open class Section
+    {
         public var form: UIForm!
         
-        public override init() {
-            super.init()
+        private var rows = [Row]()
+        public var header: Header? = nil
+        public var footer: Footer? = nil
+        
+        public init() {
+            
+        }
+        
+        public func append(_ row: Row) {
+            self.rows.append(row)
+        }
+        
+        public func insert(_ row: Row, at index: Int) {
+            
+        }
+    }
+    
+    open class Row
+    {
+        public var form: UIForm!
+        
+        public init() {
+            
         }
         
         public init(type: Types) {
@@ -33,6 +76,10 @@ open class UIForm: UIView
         }
         
         public static func `default`(text: String) -> Row {
+            return Row()
+        }
+        
+        public static func `default`(text: String, initializer: ((Row) -> Void)?) -> Row {
             return Row()
         }
         
@@ -66,11 +113,11 @@ open class UIForm: UIView
         
     }
     
-    open class Header: NSObject {
+    open class Header: UIView {
         public var form: UIForm!
     }
     
-    open class Footer: NSObject {
+    open class Footer: UIView {
         public var form: UIForm!
     }
     

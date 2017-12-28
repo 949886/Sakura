@@ -30,12 +30,11 @@ extension UIImage
     }
     
     /// Get color at a pixel.
-    /// - Note: Make sure if
     ///
     /// - Parameter point: Pixel coord.
     /// - Returns: Color in that pixel.
     @objc public func color(at point: CGPoint) -> UIColor? {
-        guard let provider = cgImage?.dataProvider else{
+        guard let provider = self.cgImage?.dataProvider else {
             return nil
         }
         
@@ -44,25 +43,19 @@ extension UIImage
         
         let pixelInfo: Int = ((Int(self.size.width) * Int(point.y)) + Int(point.x)) * 4
         
-        let r = CGFloat(pointer[pixelInfo]) / CGFloat(255.0)
-        let g = CGFloat(pointer[pixelInfo+1]) / CGFloat(255.0)
-        let b = CGFloat(pointer[pixelInfo+2]) / CGFloat(255.0)
-        let a = CGFloat(pointer[pixelInfo+3]) / CGFloat(255.0)
+        let r = CGFloat(pointer[pixelInfo]) / 255.0.f
+        let g = CGFloat(pointer[pixelInfo+1]) / 255.0.f
+        let b = CGFloat(pointer[pixelInfo+2]) / 255.0.f
+        let a = CGFloat(pointer[pixelInfo+3]) / 255.0.f
         
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
     
-    /// Get average color of all pixel of image.
+    /// <#Description#>
+    ///
+    /// - Returns: <#return value description#>
     @objc public func averageColor() -> UIColor? {
         return averageColor(in: CGRect(origin: .zero, size: self.size))
-    }
-    
-    @objc public func averageColor(in rect: CGRect) -> UIColor? {
-        return averageColor(in: rect, filter: nil)
-    }
-    
-    @objc public func averageColor(withFilter filter: ((Double, Double, Double, Double)->Bool)?) -> UIColor? {
-        return averageColor(in: CGRect(origin: .zero, size: self.size), filter: filter)
     }
     
     /// <#Description#>
@@ -71,7 +64,7 @@ extension UIImage
     ///   - rect: <#rect description#>
     ///   - samplingRate: <#samplingRate description#>
     /// - Returns: <#return value description#>
-    @objc public func averageColor(in rect: CGRect, filter: ((Double, Double, Double, Double)->Bool)?) -> UIColor? {
+    @objc public func averageColor(in rect: CGRect) -> UIColor? {
         if rect.width * rect.height > Int.max.f ||
            rect == .zero {
             return nil
@@ -99,30 +92,29 @@ extension UIImage
                 var cumulativeBlue = 0.0
                 var cumulativeAlpha = 0.0
                 
-                var validPixelsCount = 0
                 for i in 0..<pixelsCount {
                     let red   = Double(pointer[i * 4]) / 255.0;
                     let green = Double(pointer[i * 4 + 1]) / 255.0
                     let blue  = Double(pointer[i * 4 + 2]) / 255.0
                     let alpha = Double(pointer[i * 4 + 3]) / 255.0
                     
-                    let retain = filter?(red, green, blue, alpha)
-                    if retain ?? true {
-                        validPixelsCount += 1
-                        cumulativeRed += alpha == 0 ? 1.0 : red
-                        cumulativeGreen += alpha == 0 ? 1.0 : green
-                        cumulativeBlue += alpha == 0 ? 1.0 : blue
-                        cumulativeAlpha += alpha
-                    }
+                    cumulativeRed += alpha == 0 ? 1.0 : red
+                    cumulativeGreen += alpha == 0 ? 1.0 : green
+                    cumulativeBlue += alpha == 0 ? 1.0 : blue
+                    cumulativeAlpha += alpha
                 }
                 
-                color = UIColor(red: cumulativeRed.f / validPixelsCount.f,
-                                green: cumulativeGreen.f / validPixelsCount.f,
-                                blue: cumulativeBlue.f / validPixelsCount.f,
-                                alpha: cumulativeAlpha.f / validPixelsCount.f)
+                color = UIColor(red: cumulativeRed.f / pixelsCount.f,
+                                green: cumulativeGreen.f / pixelsCount.f,
+                                blue: cumulativeBlue.f / pixelsCount.f,
+                                alpha: cumulativeAlpha.f / pixelsCount.f)
             }
         }
         return color
+    }
+    
+    @objc func averageColor(at point: CGRect, withRadius radius: CGFloat) -> UIColor? {
+        return nil
     }
 }
 
@@ -131,14 +123,14 @@ extension UIImage
 extension UIImage
 {
     
-//    func modify(hue:Int, saturation: Int, brightness: Int) -> UIImage? {
-//        return nil
-//    }
+    func modify(hue:Int, saturation: Int, brightness: Int) -> UIImage? {
+        return nil
+    }
     
-    /// Get a resized image with a specific size.
+    /// <#Description#>
     ///
-    /// - Parameter size: New size.
-    /// - Returns: Resized image.
+    /// - Parameter size: <#size description#>
+    /// - Returns: <#return value description#>
     public func resized(_ size: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
         self.draw(in: CGRect(origin: .zero, size: size))
@@ -147,10 +139,10 @@ extension UIImage
         return image
     }
     
-    /// Get a cropped image with a rect area.
+    /// <#Description#>
     ///
-    /// - Parameter rect: Crop rect.
-    /// - Returns: Cropped image.
+    /// - Parameter rect: <#rect description#>
+    /// - Returns: <#return value description#>
     public func cropped(_ rect: CGRect) -> UIImage? {
         if rect.contains(CGRect(origin: .zero, size: self.size)) {
             return self
@@ -165,7 +157,6 @@ extension UIImage
     /// If original size of image is less than this size, image won't be compressed.
     ///
     /// - Parameter size: Compressed size (Unit: KB).
-    /// - Returns: Compressed image.
     public func compressed(to size: CGFloat) -> UIImage? {
         if let byteCount = UIImagePNGRepresentation(self)?.count {
             let originalSize = byteCount.f / 1024
@@ -179,10 +170,6 @@ extension UIImage
         return self
     }
     
-    /// Get a compressed image with compression quality.
-    ///
-    /// - Parameter quality: Compression quality. Value range [0, 1].
-    /// - Returns: Compressed image.
     public func compressed(quality: CGFloat) -> UIImage? {
         if let data = UIImageJPEGRepresentation(self, quality) {
             return UIImage(data: data)
@@ -210,27 +197,27 @@ extension UIImage
 
 //MARK: - Gradient
 
-extension UIImage
-{
-    public enum GradientType
-    {
-        case linear(colors: [UIColor], loactions: [Float], startPoint: CGPoint, endPoint: CGPoint)
-        case bilinear(colors: [UIColor], colors2: [UIColor], loactions: [Float], loactions2: [Float], startPoint: CGPoint, endPoint: CGPoint, startPoint2: CGPoint, endPoint2: CGPoint)
-        case radial
-        case conical(colors: [UIColor], loactions: [Float], startAngle: Float, endAngle: Float)
-        case reflected
-        case diamond
-    }
-
-    public convenience init(gradientType: GradientType, size: CGSize) {
-        switch gradientType {
-        case .linear(let colors, let loactions, let startPoint, let endPoint):
-            break
-        default:
-            break
-        }
-
-        self.init()
-    }
-}
-
+//extension UIImage
+//{
+//    public enum GradientType
+//    {
+//        case linear(colors: [UIColor], loactions: [Float], startPoint: CGPoint, endPoint: CGPoint)
+//        case bilinear(colors: [UIColor], colors2: [UIColor], loactions: [Float], loactions2: [Float], startPoint: CGPoint, endPoint: CGPoint, startPoint2: CGPoint, endPoint2: CGPoint)
+//        case radial
+//        case conical(colors: [UIColor], loactions: [Float], startAngle: Float, endAngle: Float)
+//        case reflected
+//        case diamond
+//    }
+//
+//    public convenience init(gradientType: GradientType, size: CGSize) {
+//        switch gradientType {
+//        case .linear(let colors, let loactions, let startPoint, let endPoint):
+//            break
+//        default:
+//            break
+//        }
+//
+//        self.init()
+//    }
+//}
+//

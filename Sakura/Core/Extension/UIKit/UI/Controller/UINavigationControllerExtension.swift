@@ -8,6 +8,55 @@
 
 import Foundation
 
+#if os(iOS)
+
+//MARK: - Common
+
+extension UINavigationController
+{
+    @objc open override class var top: UINavigationController? {
+        let rootViewController = UIApplication.shared.windows.first?.rootViewController
+        return topMost(of: rootViewController)
+    }
+    
+    private static func topMost(of viewController: UIViewController?) -> UINavigationController? {
+        
+        var controller: UIViewController?
+        
+        // UITabBarController
+        if  let tabBarController = viewController as? UITabBarController,
+            let selectedViewController = tabBarController.selectedViewController {
+            controller = self.topMost(of: selectedViewController) ?? viewController
+        }
+        
+        // UINavigationController
+        if let navigationController = viewController as? UINavigationController,
+            let visibleViewController = navigationController.visibleViewController {
+            controller = self.topMost(of: visibleViewController) ?? viewController
+        }
+        
+        // Presented view controller
+        if let presentedViewController = viewController?.presentedViewController {
+            controller = self.topMost(of: presentedViewController) ?? viewController
+        }
+        
+        // Child view controller
+        for subview in viewController?.view?.subviews ?? [] {
+            if let childViewController = subview.next as? UIViewController {
+                controller = self.topMost(of: childViewController) ?? viewController
+            }
+        }
+        
+        if controller is UINavigationController {
+            return controller as! UINavigationController
+        } else {
+            return nil
+        }
+    }
+}
+
+//MARK: - Navigate
+
 extension UINavigationController
 {
     
@@ -46,3 +95,5 @@ extension UINavigationController
     }
     
 }
+
+#endif

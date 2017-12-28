@@ -42,7 +42,7 @@ extension Array
 extension Array
 {
     ///Evaluate a predicate against an array of objects and return a filtered array.
-    public mutating func filter(using predicate: NSPredicate) {
+    public mutating func filter(using predicate: Predicate) {
         let filtered = (self as NSArray).filtered(using: predicate) as? Array
         self = filtered ?? []
     }

@@ -22,7 +22,8 @@ class ViewController3: UIViewController, UINavigationControllerDelegate {
 //        })
 //        self.navigationController?.push(ViewController3(), animation: .default)
         let controller = ViewController2()
-        controller.view.backgroundColor = .orange
+        controller.view.backgroundColor = .clear
+        controller.modalPresentationStyle = .overCurrentContext
         self.navigationController?.push(controller, animation: .fade(duration: 0.5), completion: {
             print("test")
             self.navigationController?.delegate = self

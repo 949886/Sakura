@@ -1,30 +1,40 @@
 //
 //  UIColorExtension.swift
-//  Swifty
+//  Sakura
 //
 //  Created by YaeSakura on 16/5/9.
 //  Copyright © 2016 Sakura. All rights reserved.
 //
 
-#if os(iOS)
+#if os(OSX)
+    import Cocoa
+    public typealias Color = NSColor
+#else
+    import UIKit
+    public typealias Color = UIColor
+#endif
 
-import UIKit
 
-extension UIColor
+//MARK: Common
+
+extension Color
 {
-
-    public var hexString: String {
-        guard let components = self.cgColor.components else { return "000000" }
-        let r = components[0]
-        let g = components[1]
-        let b = components[2]
-        return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
+    
+    /// Color from hex unsigned int value.
+    ///
+    /// - Parameter hex: e.g. 0xAARRGGBB
+    @objc public convenience init(hex : UInt) {
+        let r = CGFloat((hex & 0xFF000000) >> 24) / 255.0
+        let g = CGFloat((hex & 0x00FF0000) >> 16) / 255.0
+        let b = CGFloat((hex & 0x0000FF00) >> 8) / 255.0
+        let a = CGFloat(hex & 0x000000FF) / 255.0
+        self.init(red: r, green: g, blue: b, alpha: a)
     }
     
     /// Color from hex string.
     ///
     /// - Parameter hexString: #RGB #RGBA #RRGGBB #RRGGBBAA
-    public convenience init?(hexString : String) {
+    @objc public convenience init?(hexString : String) {
         var hexString = hexString.uppercased()
         
         if hexString.hasPrefix("#") {
@@ -67,66 +77,107 @@ extension UIColor
         } else { return nil }
     }
     
-    
-    /// UIColor from hex unsigned int value.
-    ///
-    /// - Parameter hex: e.g. 0xAARRGGBB
-    public convenience init(hex : UInt) {
-        let a = CGFloat((hex & 0xFF000000) >> 24) / 255.0
-        let r = CGFloat((hex & 0x00FF0000) >> 16) / 255.0
-        let g = CGFloat((hex & 0x0000FF00) >> 8) / 255.0
-        let b = CGFloat(hex & 0x000000FF) / 255.0
-        self.init(red: r, green: g, blue: b, alpha: a)
+    /// Get hex formated string (RRGGBB).
+    @objc public var hexString: String {
+        let rgba = self.rgba
+        let r = rgba.r
+        let g = rgba.g
+        let b = rgba.b
+        return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
     }
     
-    //MARK: Components
-    
-    public var red: CGFloat {
-        var r: CGFloat = 0
-        self.getRed(&r, green: nil, blue: nil, alpha: nil)
-        return r
-    }
-    
-    public var green: CGFloat {
-        var green: CGFloat = 0
-        self.getRed(nil, green: &green, blue: nil, alpha: nil)
-        return green
-    }
-    
-    public var blue: CGFloat {
-        var blue: CGFloat = 0
-        self.getRed(nil, green: nil, blue: &blue, alpha: nil)
-        return blue
-    }
-    
+    /// Get rgba components of color.
     public var rgba: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
         var r = 0.f, g = 0.f, b = 0.f, a = 0.f
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
         return (r, g, b, a)
     }
     
-    public var hue: CGFloat {
+    /// Red component of color.
+    @objc public var r: CGFloat {
+        var red: CGFloat = 0
+        self.getRed(&red, green: nil, blue: nil, alpha: nil)
+        return red
+    }
+    
+    /// Green component of color.
+    @objc public var g: CGFloat {
+        var green: CGFloat = 0
+        self.getRed(nil, green: &green, blue: nil, alpha: nil)
+        return green
+    }
+    
+    /// Blue component of color.
+    @objc public var b: CGFloat {
+        var blue: CGFloat = 0
+        self.getRed(nil, green: nil, blue: &blue, alpha: nil)
+        return blue
+    }
+    
+    /// Alpha component of color.
+    @objc public var alpha: CGFloat {
+        return self.cgColor.alpha
+    }
+    
+    /// Hue of color.
+    @objc public var hue: CGFloat {
         var hue: CGFloat = 0
         self.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
         return hue
     }
     
-    public var saturation: CGFloat {
+    /// Saturation of color.
+    @objc public var saturation: CGFloat {
         var saturation: CGFloat = 0
         self.getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
         return saturation
     }
     
-    public var brightness: CGFloat {
+    /// Brightness of color.
+    @objc public var brightness: CGFloat {
         var brightness: CGFloat = 0
         self.getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
         return brightness
     }
     
-    public var alpha: CGFloat {
-        return self.cgColor.alpha
+    /// Grayscale of color.
+    @objc public var grayscale: CGFloat {
+        let gs = 0.299 * r + 0.587 * g + 0.114 * b
+        if gs > 1.0 {
+            return 1.f
+        }
+        return gs
     }
     
 }
 
-#endif
+//MARK: Filters
+
+extension Color
+{
+    @objc public func multiply(_ color: Color) -> Color {
+        return self * color
+    }
+}
+
+//MARK: Operators
+
+extension Color
+{
+    
+    // Multiply.
+    public static func * (c1: Color, c2: Color) -> Color {
+        let r = c2.r * (c1.r / 255)
+        let g = c2.g * (c1.g / 255)
+        let b = c2.b * (c1.b / 255)
+        let a = c2.alpha * (c1.alpha / 255)
+        return Color(red: r, green: g, blue: b, alpha: a)
+    }
+    
+    // Multiply.
+    public static func *= (c1: inout Color, c2: Color) {
+        c1 = c1 * c2
+    }
+    
+}
+

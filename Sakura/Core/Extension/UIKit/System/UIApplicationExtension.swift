@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension UIApplication
+extension UIApplication
 {
     
     /// Directories
@@ -58,7 +58,7 @@ public extension UIApplication
             jump(url: "sms://\(pn)")
         case .setting(let type):
             switch type {
-            case .appSetting: jump(url: UIApplicationOpenSettingsURLString)
+            case .appSetting: jump(url: UIApplication.openSettingsURLString)
             case .notifications: jump(url: type.rawValue + "&&path=\(bundleID)")
             default: jump(url: type.rawValue)
             }
@@ -91,7 +91,7 @@ public extension UIApplication
         case .landscape: viewOrientation = "Landscape"
         }
         for info in launchImages ?? [] {
-            var imageSize = CGSizeFromString(info["UILaunchImageSize"] ?? "{0,0}")
+            var imageSize = NSCoder.cgSize(for: info["UILaunchImageSize"] ?? "{0,0}")
             if viewOrientation == info["UILaunchImageOrientation"] {
                 if info["UILaunchImageOrientation"] == "Landscape" {
                     imageSize = CGSize(width: imageSize.height, height: imageSize.width)

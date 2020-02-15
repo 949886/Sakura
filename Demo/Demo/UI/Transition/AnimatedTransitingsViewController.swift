@@ -26,9 +26,9 @@ class AnimatedTransitingsViewController: UIViewController, UITableViewDataSource
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -44, 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -44, right: 0)
         self.tableView.estimatedRowHeight = 200
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         self.view.addSubview(tableView)
     }

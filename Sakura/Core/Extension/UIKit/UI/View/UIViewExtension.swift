@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Stored Property
 
-public extension UIView
+extension UIView
 {
     /// Set extra hit test area.
     /// e.g. (-8, -8, -8, -8) will extend 8 point of hit area of all direction.
@@ -198,7 +198,7 @@ extension UIView
         for _ in 0 ..< Static.depth { print("\t", terminator: "") }
         
         let className = NSStringFromClass(type(of:self))
-        let frame = NSStringFromCGRect(self.frame)
+        let frame = NSCoder.string(for: self.frame)
         
         print("\(className): \(frame)")
         
@@ -310,7 +310,7 @@ extension UIView
     
     public class func omaskImage(withRadius radius: CGFloat, cornerColor color: UIColor, borderWidth: CGFloat, borderColor: UIColor) -> UIImage? {
         let boundingRect = CGRect(x: 0, y: 0, width: radius * 2 + borderWidth + 1, height: radius * 2 + borderWidth + 1)
-        let innerRect: CGRect = UIEdgeInsetsInsetRect(boundingRect, UIEdgeInsetsMake(borderWidth / 2, borderWidth / 2, borderWidth / 2, borderWidth / 2))
+        let innerRect: CGRect = boundingRect.inset(by: UIEdgeInsets(top: borderWidth / 2, left: borderWidth / 2, bottom: borderWidth / 2, right: borderWidth / 2))
         UIGraphicsBeginImageContextWithOptions(boundingRect.size, false, 0)
         if let context = UIGraphicsGetCurrentContext() {
             context.addRect(boundingRect)
@@ -325,7 +325,7 @@ extension UIView
             context.strokePath()
             let image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            return image?.resizableImage(withCapInsets: UIEdgeInsetsMake(radius, radius, radius, radius))
+            return image?.resizableImage(withCapInsets: UIEdgeInsets(top: radius, left: radius, bottom: radius, right: radius))
         }
         return nil
     }
@@ -348,7 +348,7 @@ extension UIView
         if extraHitInsets == .zero {
             return swizzledPoint(inside: point, with: event)
         } else {
-            return UIEdgeInsetsInsetRect(self.bounds, extraHitInsets).contains(point)
+            return self.bounds.inset(by: extraHitInsets).contains(point)
         }
     }
     

@@ -23,7 +23,7 @@ extension UIViewController
     
     public enum TransitionType {
         case modal
-        case navigation(UINavigationControllerOperation)
+        case navigation(UINavigationController.Operation)
         case tab(TabTransitionDirection)
         
         public enum ModalTransitionOperation {

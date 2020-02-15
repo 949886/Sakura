@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Stored Property
 
-public extension UIButton
+extension UIButton
 {
     struct AssociatedKey {
         static var textLayout: Void?
@@ -118,27 +118,27 @@ extension UIButton {
             let spacing = CGFloat(self.textLayoutSpacing)
             switch textLayout {
             case .top:
-                imageEdgeInsets = UIEdgeInsetsMake(0, 0, -labelHeight - spacing / 2.0, -labelWidth)
-                labelEdgeInsets = UIEdgeInsetsMake(-imageHeight - spacing / 2.0, -imageWith, 0, 0)
+                imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -labelHeight - spacing / 2.0, right: -labelWidth)
+                labelEdgeInsets = UIEdgeInsets(top: -imageHeight - spacing / 2.0, left: -imageWith, bottom: 0, right: 0)
             case .bottom:
-                imageEdgeInsets = UIEdgeInsetsMake(-labelHeight - spacing / 2.0, 0, 0, -labelWidth)
-                labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith, -imageHeight - spacing / 2.0, 0)
+                imageEdgeInsets = UIEdgeInsets(top: -labelHeight - spacing / 2.0, left: 0, bottom: 0, right: -labelWidth)
+                labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWith, bottom: -imageHeight - spacing / 2.0, right: 0)
             case .left:
-                imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth + spacing / 2.0, 0, -labelWidth - spacing / 2.0)
-                labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith - spacing / 2.0, 0, imageWith + spacing / 2.0)
+                imageEdgeInsets = UIEdgeInsets(top: 0, left: labelWidth + spacing / 2.0, bottom: 0, right: -labelWidth - spacing / 2.0)
+                labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWith - spacing / 2.0, bottom: 0, right: imageWith + spacing / 2.0)
             case .right:
-                imageEdgeInsets = UIEdgeInsetsMake(0, -spacing / 2.0, 0, spacing / 2.0)
-                labelEdgeInsets = UIEdgeInsetsMake(0, spacing / 2.0, 0, -spacing / 2.0)
+                imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing / 2.0, bottom: 0, right: spacing / 2.0)
+                labelEdgeInsets = UIEdgeInsets(top: 0, left: spacing / 2.0, bottom: 0, right: -spacing / 2.0)
             }
             
-            self.titleEdgeInsets = UIEdgeInsetsMake(self.titleEdgeInsets.top + labelEdgeInsets.top,
-                                                    self.titleEdgeInsets.left + labelEdgeInsets.left,
-                                                    self.titleEdgeInsets.bottom + labelEdgeInsets.bottom,
-                                                    self.titleEdgeInsets.right + labelEdgeInsets.right)
-            self.imageEdgeInsets = UIEdgeInsetsMake(self.imageEdgeInsets.top + imageEdgeInsets.top,
-                                                    self.imageEdgeInsets.left + imageEdgeInsets.left,
-                                                    self.imageEdgeInsets.bottom + imageEdgeInsets.bottom,
-                                                    self.imageEdgeInsets.right + imageEdgeInsets.right)
+            self.titleEdgeInsets = UIEdgeInsets(top: self.titleEdgeInsets.top + labelEdgeInsets.top,
+                                                left: self.titleEdgeInsets.left + labelEdgeInsets.left,
+                                                bottom: self.titleEdgeInsets.bottom + labelEdgeInsets.bottom,
+                                                right: self.titleEdgeInsets.right + labelEdgeInsets.right)
+            self.imageEdgeInsets = UIEdgeInsets(top: self.imageEdgeInsets.top + imageEdgeInsets.top,
+                                                left: self.imageEdgeInsets.left + imageEdgeInsets.left,
+                                                bottom: self.imageEdgeInsets.bottom + imageEdgeInsets.bottom,
+                                                right: self.imageEdgeInsets.right + imageEdgeInsets.right)
             
         }
     }

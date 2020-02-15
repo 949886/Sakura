@@ -45,7 +45,7 @@ open class UISystemStatus: UIView
         self.addSubview(fpsLabel)
         
         displayLink = CADisplayLink(target: self, selector: #selector(displayLinkCallback(_:)))
-        displayLink.add(to: RunLoop.main, forMode: .commonModes)
+        displayLink.add(to: RunLoop.main, forMode: .common)
         
         self.sizeToFit()
     }

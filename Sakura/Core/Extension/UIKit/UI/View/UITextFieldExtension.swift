@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Stored Property
 
-public extension UITextField
+extension UITextField
 {
     
     public var selectedText: String? {
@@ -56,7 +56,7 @@ extension UITextField
     func _setPlaceholderColor(color: UIColor) {
         objc_setAssociatedObject(self, &AssociatedKey.placeholderColor, color, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         if let placeholder = self.placeholder {
-            let attributes = [NSAttributedStringKey.foregroundColor : color]
+            let attributes = [NSAttributedString.Key.foregroundColor : color]
             self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attributes)
         }
     }

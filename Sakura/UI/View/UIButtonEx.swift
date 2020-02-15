@@ -83,7 +83,7 @@ open class UIButtonEx: UIButton
     
     //MARK: Methods
     
-    public func setBackgroundColor(_ color: UIColor?, for state: UIControlState) {
+    public func setBackgroundColor(_ color: UIColor?, for state: UIControl.State) {
         if color != nil {
             self.setBackgroundImage(UIImage(color: color!), for: state)
         } else {
@@ -91,14 +91,14 @@ open class UIButtonEx: UIButton
         }
     }
     
-    public func setBorderColor(_ color: UIColor?, for state: UIControlState) {
+    public func setBorderColor(_ color: UIColor?, for state: UIControl.State) {
         if self.layer.borderWidth == 0 {
             self.layer.borderWidth = 1
         }
         borderColorMapper[state.rawValue] = color ?? UIColor.clear
     }
     
-    public func setShadowColor(_ color: UIColor?, for state: UIControlState) {
+    public func setShadowColor(_ color: UIColor?, for state: UIControl.State) {
         if self.layer.shadowOpacity == 0 {
             self.layer.shadowOpacity = 1
         }

@@ -167,10 +167,10 @@ extension UIImage
     /// - Parameter size: Compressed size (Unit: KB).
     /// - Returns: Compressed image.
     public func compressed(to size: CGFloat) -> UIImage? {
-        if let byteCount = UIImagePNGRepresentation(self)?.count {
+        if let byteCount = self.pngData()?.count {
             let originalSize = byteCount.f / 1024
             if size < originalSize {
-                if let data = UIImageJPEGRepresentation(self, size / originalSize.f) {
+                if let data = self.jpegData(compressionQuality: size / originalSize.f) {
                     return UIImage(data: data)
                 }
                 return nil
@@ -184,7 +184,7 @@ extension UIImage
     /// - Parameter quality: Compression quality. Value range [0, 1].
     /// - Returns: Compressed image.
     public func compressed(quality: CGFloat) -> UIImage? {
-        if let data = UIImageJPEGRepresentation(self, quality) {
+        if let data = self.jpegData(compressionQuality: quality) {
             return UIImage(data: data)
         }
         return nil

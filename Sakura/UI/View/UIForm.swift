@@ -101,7 +101,7 @@ open class UIForm: UIView
         
         public enum Types {
             case `default`(text: String, subtitle: String?, view: UIView?)
-            case `switch`()
+            case `switch`
             case text
             case table(cell: UITableViewCell, delegate: Any?)
             case grid(cell: UICollectionViewCell, delegate: Any?)
@@ -147,7 +147,7 @@ public func -- (section: UIForm.Section, row: UIForm.Row) -> UIForm {
     return section.form
 }
 
-public extension UIForm {
+extension UIForm {
     
     @discardableResult
     public static func -- (form1: UIForm, form2: UIForm) -> UIForm {

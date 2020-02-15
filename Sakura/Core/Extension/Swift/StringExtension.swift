@@ -409,7 +409,7 @@ extension String
         }
         
         public func size(limit: CGSize, font : UIFont, style : NSMutableParagraphStyle) -> CGRect {
-            let attribute = [NSAttributedStringKey.font : font, NSAttributedStringKey.paragraphStyle : style]
+            let attribute = [NSAttributedString.Key.font : font, NSAttributedString.Key.paragraphStyle : style]
             return self.boundingRect(with: limit, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attribute, context: nil)
         }
     }

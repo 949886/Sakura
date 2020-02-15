@@ -22,7 +22,7 @@ extension UIViewController
                 
                 if to.view.superview == nil {
                     context.containerView.addSubview(to.view)
-                    context.containerView.sendSubview(toBack: to.view)
+                    context.containerView.sendSubviewToBack(to.view)
                 }
                 to.view.frame = context.finalFrame(for: to)
                 to.view.alpha = 0
@@ -59,7 +59,7 @@ extension UIViewController
                 
                 if to.isBeingPresented {
                     context.containerView.addSubview(to.view)
-                    context.containerView.sendSubview(toBack: to.view)
+                    context.containerView.sendSubviewToBack(to.view)
                     
                     to.view.center = context.containerView.center
                     to.view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)

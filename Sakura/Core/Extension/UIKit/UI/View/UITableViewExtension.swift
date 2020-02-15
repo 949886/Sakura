@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension UITableView
+extension UITableView
 {
     
     /// Default selections of collecion view.
@@ -53,7 +53,7 @@ public extension UITableView
             self.tableHeaderView = view
             view.setNeedsLayout()
             view.layoutIfNeeded()
-            let height = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+            let height = view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
             var frame = view.frame
             frame.size.height = height
             view.frame = frame

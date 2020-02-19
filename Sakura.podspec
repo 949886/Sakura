@@ -1,15 +1,15 @@
 Pod::Spec.new do |s|
 
   s.name = 'Sakura'
-  s.version = '0.0.10'
-  s.summary = 'A beautiful and powerful frameworks like cherry blossom.'
+  s.version = '0.1.0'
+  s.summary = '❀ swift utils lib for private use.'
   s.homepage = 'https://github.com/949886'
   s.license = { :type => 'Copyright', :text => 'Copyright (c) 2017 Yae Sakura. All rights reserved.' }
-  s.authors = { 'Yae Sakura' => '949886@qq.com' }
+  s.authors = { 'Lunar Eclipse' => '949886@qq.com' }
   s.source = { :git => 'https://github.com/949886/Sakura.git', :branch => "master"}
-  s.platform = :ios, '8.0'
+  s.platform = :ios, '9.0'
   s.requires_arc = true
-  s.xcconfig    = { 'SWIFT_VERSION' => '4.0' }
+  s.xcconfig    = { 'SWIFT_VERSION' => '5.0' }
   s.default_subspec = 'Core', 'UI'
 
   s.subspec "Core" do |ss|
